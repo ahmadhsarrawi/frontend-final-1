@@ -4,7 +4,7 @@ import Landing from './pages/Landing';
 function App() {
   return (
     <>
-    <BrowserRouter>
+    <BrowserRouter basename='frontend-final-1'>
     <Routes>
       <Route path='/' element={<Landing/>}/>
     </Routes>
