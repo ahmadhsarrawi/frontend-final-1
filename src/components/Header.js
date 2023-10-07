@@ -1,13 +1,12 @@
-import React from 'react'
-import { ReactComponent as Logo } from '../assets/images/logo.svg';
-
+import React from 'react';
+import {AppBar,Toolbar, Typography} from '@mui/material';
 export default function Header() {
   return (
-    <Header>
-    <Logo/>
-    <div>Header</div>
-    </Header>
-    
-  )
-
+    <AppBar sx={{backgroundColor:'white'}}>
+       <Toolbar>
+        <Typography sx={{color:'#17494D'}}>CORA'L</Typography>
+       </Toolbar>
+    </AppBar>
+  );
 }
+
