@@ -6,7 +6,6 @@ import {
   Tab,
   Stack,
   IconButton,
-  Box,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -72,7 +71,6 @@ const Header = () => {
           backgroundColor: theme.palette.bright.main,
           boxShadow: "none",
           width: "100%",
-          padding: "0px",
           padding: "30px 20px",
         }}
       >
