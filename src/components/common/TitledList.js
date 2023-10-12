@@ -7,10 +7,10 @@ import { List, ListItem,Typography } from '@mui/material';
 
 const TitledList = ({listTitle,listLinks}) => {
   return (
-    <List
-      sx={{ display: "flex", flexDirection: "column", gap: "8px" }}
+    <List 
+      sx={{ display: "flex", flexDirection: "column", gap: "8px", }}
       subheader={
-        <Typography
+        <Typography 
           sx={{ mb: "4px" }}
           color="bright.main"
           variant="displaySmall"

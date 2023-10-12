@@ -23,7 +23,7 @@ const list2Info = {
 
 const Footer = () => {
   return (
-    <Box
+    <Box 
       bgcolor="primary.main"
       component="footer"
       sx={{
