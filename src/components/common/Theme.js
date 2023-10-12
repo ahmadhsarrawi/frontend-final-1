@@ -25,72 +25,70 @@ const theme = createTheme({
       lightText: "#B6B6B6",
       highEmphasis: "#171520",
       lowEmphasis: "#626262",
-    
-    }
+    },
   },
   breakpoints: {
     values: {
-      xs:"",
-    }
-  },
-    typography: {
-      displayLarge: {
-        fontSize: "40px",
-        fontWeight: "700",
-        lineHeight: "52px",
-      },
-      displayMedium: {
-        fontSize: "34px",
-        fontWeight: "600",
-        lineHeight: "44px",
-      },
-      displaySmall: {
-        fontSize: "20px",
-        fontWeight: "600",
-        lineHeight: "26px",
-      },
-      titleMedium: {
-        fontSize: "14px",
-        fontWeight: "500",
-        lineHeight: "18px",
-      },
-      titleRegular: {
-        fontSize: "14px",
-        fontWeight: "600",
-        lineHeight: "16px",
-      },
-      bodyMedium: {
-        fontSize: "16px",
-        fontWeight: "500",
-        lineHeight: "20px",
-      },
-      bodyRegular: {
-        fontSize: "16px",
-        fontWeight: "400",
-        lineHeight: "20px",
-      },
-      labelLarge: {
-        fontSize: "14px",
-        fontWeight: "400",
-        lineHeight: "20px",
-      },
-      labelMedium: {
-        fontSize: "12px",
-        fontWeight: "500",
-        lineHeight: "16px",
-      },
-      labelSmall: {
-        fontSize: "12px",
-        fontWeight: "600",
-        lineHeight: "16px",
-      },
-      Link: {
-        fontSize: "12px",
-        fontWeight: "500",
-        lineHeight: "18px",
-      },
+      xs: "",
     },
-  
+  },
+  typography: {
+    displayLarge: {
+      fontSize: "40px",
+      fontWeight: "700",
+      lineHeight: "52px",
+    },
+    displayMedium: {
+      fontSize: "34px",
+      fontWeight: "600",
+      lineHeight: "44px",
+    },
+    displaySmall: {
+      fontSize: "20px",
+      fontWeight: "600",
+      lineHeight: "26px",
+    },
+    titleMedium: {
+      fontSize: "14px",
+      fontWeight: "500",
+      lineHeight: "18px",
+    },
+    titleRegular: {
+      fontSize: "14px",
+      fontWeight: "600",
+      lineHeight: "16px",
+    },
+    bodyMedium: {
+      fontSize: "16px",
+      fontWeight: "500",
+      lineHeight: "20px",
+    },
+    bodyRegular: {
+      fontSize: "16px",
+      fontWeight: "400",
+      lineHeight: "20px",
+    },
+    labelLarge: {
+      fontSize: "14px",
+      fontWeight: "400",
+      lineHeight: "20px",
+    },
+    labelMedium: {
+      fontSize: "12px",
+      fontWeight: "500",
+      lineHeight: "16px",
+    },
+    labelSmall: {
+      fontSize: "12px",
+      fontWeight: "600",
+      lineHeight: "16px",
+    },
+    Link: {
+      fontSize: "12px",
+      fontWeight: "500",
+      lineHeight: "18px",
+    },
+  },
 });
 
 export default theme;
