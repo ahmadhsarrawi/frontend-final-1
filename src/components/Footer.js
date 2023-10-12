@@ -1,8 +1,20 @@
 import React from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Stack,
+  Typography,
+  Grid,
+  Divider,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import logos from "../assets/images/logos.svg";
 import TitledList from "./common/TitledList";
 import LocationIcon from "../assets/images/LocationIcon";
+import theme from "./common/Theme";
+import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 
 const list1Info = {
   title: "Shop by Category",
@@ -21,54 +33,109 @@ const list2Info = {
   links: ["Featured", "Trendy", "Brands"],
 };
 
-const Footer = () => {
+const AccordionContainer = (props) => {
   return (
-    <Box 
+    <Accordion TransitionProps={{ "aria-expanded": "false" }}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Typography variant="titleMedium" color={"lowEmphasis.main"}>
+          More about CORA'L
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails sx={{ padding: 0 }}>{props.children}</AccordionDetails>
+    </Accordion>
+  );
+};
+
+function FooterGrid() {
+  return (
+    <Grid
+      container
       bgcolor="primary.main"
-      component="footer"
       sx={{
         padding: "32px 60px",
-        position: "absolute",
         width: "100%",
-        bottom: 0,
-        display: "flex",
-        justifyContent: "space-between",
+
+        // overflow: "hidden",
+        [theme.breakpoints.down("sm")]: { gap: "24px" },
       }}
     >
-      <Box sx={{ display: "flex", gap: "68px" }}>
+      <Grid item xs={12} sm={6} md={3} lg={2}>
         <TitledList listTitle={list1Info.title} listLinks={list1Info.links} />
+      </Grid>
+      <Grid item xs={12} sm={6} md={3} lg={2}>
         <TitledList listTitle={list2Info.title} listLinks={list2Info.links} />
-      </Box>
-      <Stack>
-        <Box
+      </Grid>
+      <Grid item xs={12} sm={12} md={6} lg={8}>
+        <Divider
           sx={{
-            mt: "17px",
-            mb: "30px",
+            bgcolor: "primaryTint.main",
+            mt: "12px",
+            mb: "28px",
+            [theme.breakpoints.up("md")]: { display: "none" },
+          }}
+        />
+        <Stack
+          spacing={{ xs: 2 }}
+          sx={{
             display: "flex",
-            justifyContent: "flex-end",
+            alignItems: "flex-end",
+            [theme.breakpoints.down("md")]: {
+              alignItems: "flex-start",
+            },
           }}
         >
-          <img alt="logos" src={logos} />
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            justifyContent: "flex-end",
-            mb: "10px",
-          }}
-        >
-          <LocationIcon />
-          <Typography variant="titleMedium" color="bright.main">
-            United States
+          <Box
+            sx={{
+              mt: "17px",
+              // mb: "30px",
+            }}
+          >
+            <img alt="logos" src={logos} />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              // mb: "10px",
+            }}
+          >
+            <LocationIcon />
+            <Typography variant="titleMedium" color="bright.main">
+              United States
+            </Typography>
+          </Box>
+          <Typography variant="titleMedium" color="lightText.main">
+            © 2021 | Cora Leviene All Rights Reserved
           </Typography>
-        </Box>
-        <Typography variant="titleMedium" color="lightText.main" sx={{}}>
-          © 2021 | Cora Leviene All Rights Reserved
-        </Typography>
-      </Stack>
-    </Box>
+        </Stack>
+      </Grid>
+    </Grid>
+  );
+}
+
+const Footer = () => {
+  return (
+    <>
+      <Box
+        sx={{
+          flexGrow: 1,
+          [theme.breakpoints.down("sm")]: { display: "none" },
+        }}
+      >
+        <FooterGrid />
+      </Box>
+      <Box
+        sx={{
+          flexGrow: 1,
+          [theme.breakpoints.up("sm")]: { display: "none" },
+        }}
+      >
+        <AccordionContainer>
+          <FooterGrid />
+        </AccordionContainer>
+      </Box>
+    </>
   );
 };
 

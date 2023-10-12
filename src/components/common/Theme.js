@@ -27,11 +27,8 @@ const theme = createTheme({
       lowEmphasis: "#626262",
     },
   },
-  breakpoints: {
-    values: {
-      xs: "",
-    },
-  },
+  
+  
   typography: {
     displayLarge: {
       fontSize: "40px",

@@ -21,7 +21,7 @@ const TitledList = ({listTitle,listLinks}) => {
       }
     >{listLinks.map(item => {
       return (
-        <ListItem disablePadding>
+        <ListItem disablePadding key={item}>
           <Typography
             color="lightText.main"
             variant="displaySmall"
