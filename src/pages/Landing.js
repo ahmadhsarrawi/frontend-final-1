@@ -8,7 +8,7 @@ import theme from "../components/common/Theme";
 export default function Landing(props) {
   return (
     <ThemeProvider theme={theme}>
-      <Footer />
+      
     </ThemeProvider>
   );
 }
