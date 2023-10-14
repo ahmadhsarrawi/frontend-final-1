@@ -18,7 +18,7 @@ function App() {
           </Routes>
           <Footer />
         </BrowserRouter>
-      </ContextProvider>
+      </ContextProvider> 
     </ThemeProvider>
   );
 }
