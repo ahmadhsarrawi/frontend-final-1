@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "../components/Footer";
+import Banner from "../components/Banner";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../components/common/Theme";
 
@@ -8,6 +8,7 @@ import theme from "../components/common/Theme";
 export default function Landing(props) {
   return (
     <ThemeProvider theme={theme}>
+      <Banner/>
       
     </ThemeProvider>
   );
