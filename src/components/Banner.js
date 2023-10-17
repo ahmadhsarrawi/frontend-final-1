@@ -12,7 +12,26 @@ const Banner = () => {
     objectFit: "cover",
     borderRadius: "16px",
   });
-
+  const banners = [
+    {
+      image: discount,
+      topic: "15% off and more!",
+      topicWidth: { xs: "100px", sm: "150px", md: "251px" },
+      color: theme.palette.pink.main,
+      imgdescription: "discount",
+      iconBg: "#FFFFFF80",
+      iconColor: "pink",
+    },
+    {
+      image: highRating,
+      topic: "Popular in the community!",
+      topicWidth: { xs: "100px", sm: "150px", md: "251px" },
+      color: theme.palette.primary.main,
+      imgdescription: "High rating products",
+      iconBg: theme.palette.navy.main,
+      iconColor: theme.palette.primary.main,
+    },
+  ];
   return (
     <ThemeProvider theme={theme}>
       <Container
@@ -37,7 +56,7 @@ const Banner = () => {
                   },
                 }}
               />
-              <Stack
+              <Box
                 gap={{ xs: 1, sm: 1.5, lg: 3 }}
                 sx={{
                   position: "absolute",
@@ -45,7 +64,7 @@ const Banner = () => {
                   left: "59px",
                   transform: "translateY(-50%)",
                 }}
-                width={{ xs: "100px", sm: "150px", md: "600px" }}
+                width={{ xs: "100px", sm: "200px", md: "600px" }}
               >
                 <Typography
                   fontSize={{
@@ -58,31 +77,14 @@ const Banner = () => {
                 >
                   Limited Edition Products
                 </Typography>
-              </Stack>
+              </Box>
             </Box>
           </Grid>
-          <Grid item xs={6}>
-            <BannerItem
-              image={discount}
-              topic="15% off and more!"
-              topicWidth={{ xs: "100px", sm: "150px", md: "251px" }}
-              color={theme.palette.pink.main}
-              imgdescription="discount"
-              iconBg="#FFFFFF80"
-              iconColor="pink"
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <BannerItem
-              image={highRating}
-              topic="Popular in the community!"
-              topicWidth={{ xs: "100px", sm: "150px", md: "251px" }}
-              color={theme.palette.primary.main}
-              imgdescription="High rating products"
-              iconBg={theme.palette.navy.main}
-              iconColor={theme.palette.primary.main}
-            />
-          </Grid>
+          {banners.map((item, index) => (
+            <Grid item xs={6} key={index}>
+              <BannerItem {...item} />
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </ThemeProvider>

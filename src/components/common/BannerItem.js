@@ -1,7 +1,6 @@
-import React from 'react';
-import { Box, styled, Stack, Typography } from '@mui/material';
+import React from "react";
+import { Box, styled, Stack, Typography } from "@mui/material";
 import IconBox from "./IconBox";
-
 
 const BannerItem = ({
   image,
@@ -17,22 +16,21 @@ const BannerItem = ({
     objectFit: "cover",
     borderRadius: "16px",
   });
-  console.log(iconColor)
+  console.log(iconColor);
 
   return (
-    
-        <Box position="relative">
+    <Box position="relative">
       <StyledImg
         src={image}
         alt={imgdescription}
         sx={{
-            height: {
-              xs: "100px",
-              sm: "120px",
-              md: "150px",
-              lg: "230px",
-            },
-          }}
+          height: {
+            xs: "100px",
+            sm: "120px",
+            md: "150px",
+            lg: "230px",
+          },
+        }}
       />
       <Stack
         gap={{ xs: 1, sm: 1.5, lg: 3 }}
@@ -47,30 +45,24 @@ const BannerItem = ({
       >
         <Typography
           fontSize={{
-            xs: "0.8rem",
-            sm: "1.1rem",
-            md: "1.9rem",
-            lg: "2.3rem",
+            xs: "0.87rem",
+            sm: "1.3rem",
+            md: "1.8rem",
+            lg: "2.4rem",
           }}
           fontWeight="700"
-          lineHeight="16px"
           sx={{
-            color:{color},
-            lineHeight: { xs: "18px", md: "40px", lg: "52px" },
+            color: { color },
+            lineHeight: { xs: "16px",sm:"25px", md: "40px", lg: "52px" },
             textAlign: "right",
           }}
         >
           {topic}
         </Typography>
-        <IconBox
-                  backgroundColor={iconBg}
-                  iconColor={iconColor}
-                />
+        <IconBox backgroundColor={iconBg} iconColor={iconColor} />
       </Stack>
     </Box>
-    
   );
 };
 
 export default BannerItem;
-
