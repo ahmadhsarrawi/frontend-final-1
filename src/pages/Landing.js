@@ -13,10 +13,12 @@ import GridContainer from "../components/common/GridContainer";
 import NewArrivals from "../components/NewArrivals";
 import HandPickedCollections from "../components/HandPickedCollections";
 import ShopByBrands from "../components/ShopByBrands";
+import Hero from "../components/Hero";
 
 export default function Landing(props) {
   return (
     <ThemeProvider theme={theme}>
+      <Hero/>
       <HorizontalFlexContainer title={"Top Categories"} gap="5px" mobileOnly>
         <IconTile image="icon-fill-cream.svg" title={"Skincare"} />
         <IconTile image="icon-fill-ring.svg" title={"Jewellery"} />
