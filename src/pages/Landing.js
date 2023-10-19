@@ -1,4 +1,5 @@
 import React from "react";
+import Banner from "../components/Banner";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../components/common/Theme";
 import HorizontalFlexContainer from "../components/common/HorizontalFlexContainer";
@@ -23,11 +24,11 @@ export default function Landing(props) {
         <IconTile image="icon-fill-watch.svg" title={"Watches"} />
         <IconTile image="icon-fill-cream.svg" title={"Eyewear"} />
       </HorizontalFlexContainer>
-      <NewArrivals/>
-      
-      <HandPickedCollections/>
-      <ShopByBrands/>
-     
+      <NewArrivals />
+
+      <HandPickedCollections />
+      <ShopByBrands />
+      <Banner />
     </ThemeProvider>
   );
 }

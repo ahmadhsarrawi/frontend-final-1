@@ -19,9 +19,8 @@ import bag from "../assets/images/bag.svg";
 import addToHome from "../assets/images/add-to-homescreen.svg";
 import search from "../assets/images/search.svg";
 import notification from "../assets/images/notification.svg";
-import MenuIcon from "@mui/icons-material/Menu";
+import menu from "../assets/images/menu.svg";
 import theme from "./common/Theme";
-
 const HeaderTabs = ({ value, handleChange }) => (
   <Tabs
     value={value}
@@ -35,13 +34,11 @@ const HeaderTabs = ({ value, handleChange }) => (
     <Tab label="Apparels" sx={tabStyles} />
   </Tabs>
 );
-
 const tabStyles = {
   textTransform: "capitalize",
   fontSize: "14px",
   color: "#171520",
 };
-
 const Header = () => {
   const [value, setValue] = React.useState(0);
   const isMobile = useMediaQuery(
@@ -50,7 +47,6 @@ const Header = () => {
   const isTablet = useMediaQuery(
     `(max-width:${theme.breakpoints.values.md}px)`
   );
-
   const handleChange = (newValue) => {
     setValue(newValue);
   };
@@ -59,18 +55,15 @@ const Header = () => {
     { icon: profile, alt: "profile icon" },
     { icon: bag, alt: "bag icon" },
   ];
-
   const mobileIconsData = [
     { icon: addToHome, alt: "heart icon" },
     { icon: search, alt: "profile icon" },
     { icon: notification, alt: "bag icon" },
   ];
-
   const iconSet = isMobile ? mobileIconsData : iconsData;
-
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth='100%'>
+      <Container maxWidth="100%">
         <AppBar
           position="sticky"
           sx={{
@@ -97,7 +90,7 @@ const Header = () => {
                     sx={{ color: theme.palette.primary.main, pl: "0" }}
                     aria-label="menu"
                   >
-                    <MenuIcon />
+                    <img src={menu} alt="menu" />
                   </IconButton>
                   <Typography
                     variant="h6"
@@ -121,14 +114,12 @@ const Header = () => {
                   <HeaderTabs value={value} handleChange={handleChange} />
                 </>
               )}
-
               <Stack
                 direction="row"
                 spacing={0.5}
                 style={{ marginLeft: "auto" }}
               >
                 {!isMobile && <SearchWithIcon />}
-
                 {iconSet.map((data, index) => (
                   <IconButton key={index}>
                     <img src={data.icon} alt={data.alt} />
@@ -142,5 +133,4 @@ const Header = () => {
     </ThemeProvider>
   );
 };
-
 export default Header;
