@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/frontend-final-1/static/css/main.f5e5c17e.css",
-    "main.js": "/frontend-final-1/static/js/main.1f902535.js",
+    "main.js": "/frontend-final-1/static/js/main.17c0a1b6.js",
     "static/media/trendyBags.svg": "/frontend-final-1/static/media/trendyBags.1d0c8ec6aec64901ccc1c7f01d689af6.svg",
     "static/media/laura-chouette-Atomp7YdMaE-unsplash 1.pdf": "/frontend-final-1/static/media/laura-chouette-Atomp7YdMaE-unsplash 1.f44097489fdd304e8d5d.pdf",
     "static/media/discoount.svg": "/frontend-final-1/static/media/discoount.d5417c0600c36b7527446ce0d843df03.svg",
@@ -78,10 +78,10 @@
     "static/media/chevron-right.svg": "/frontend-final-1/static/media/chevron-right.f55893342981b61aa088.svg",
     "static/media/chevron-right-small.svg": "/frontend-final-1/static/media/chevron-right-small.458543ece7931ebd33bb.svg",
     "main.f5e5c17e.css.map": "/frontend-final-1/static/css/main.f5e5c17e.css.map",
-    "main.1f902535.js.map": "/frontend-final-1/static/js/main.1f902535.js.map"
+    "main.17c0a1b6.js.map": "/frontend-final-1/static/js/main.17c0a1b6.js.map"
   },
   "entrypoints": [
     "static/css/main.f5e5c17e.css",
-    "static/js/main.1f902535.js"
+    "static/js/main.17c0a1b6.js"
   ]
 }
