@@ -3,18 +3,19 @@ import Rating from "./Rating";
 import ButtonWithIcon from "./ButtonWithIcon";
 import { PiHandbagSimple } from "react-icons/pi";
 import { TbHeart } from "react-icons/tb";
-import { Paper, Typography, IconButton,Box } from "@mui/material";
+import { Paper, Typography, IconButton,Box,  } from "@mui/material";
 
 const HorizontalCard = () => {
   return (
-    <Box
+    
+    <Box 
       sx={{
         borderRadius: "8px",
         display: "flex",
         flexDirection: "column",
         gap: "8px",
         flexShrink: "1",
-        minWidth:{xs:'200px',md:'280px'},
+        minWidth:{xs:'150px',md:'240px'},
         flexGrow:'1',
         mb:'16px'
       }}

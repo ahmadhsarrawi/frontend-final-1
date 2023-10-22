@@ -1,10 +1,10 @@
 import React from "react";
 import { Box } from "@mui/material";
-import { Typography, Paper } from "@mui/material";
+import { Typography, Paper,Card,CardActionArea } from "@mui/material";
 
 const Tile = ({ image, title }) => {
   return (
-    <Box
+    <Card elevation={0}
       sx={{
         position: "relative",
         aspectRatio: "1/1",
@@ -14,6 +14,8 @@ const Tile = ({ image, title }) => {
         
       }}
     >
+      <CardActionArea sx={{width:'100%',height:'100%'}} href="frontend-final-1/categories">
+
       <Paper
         elevation={0}
         sx={{
@@ -25,7 +27,7 @@ const Tile = ({ image, title }) => {
           width: "100%",
           padding: "16px",
           background:
-            "linear-gradient(180deg, rgba(196, 196, 196, 0.00) 0%, rgba(3, 24, 26, 0.46) 100%)",
+          "linear-gradient(180deg, rgba(196, 196, 196, 0.00) 0%, rgba(3, 24, 26, 0.46) 100%)",
           borderRadius: "0",
         }}
       >
@@ -33,7 +35,7 @@ const Tile = ({ image, title }) => {
           sx={{typography:{xs:'titleMedium',sm:"displaySmall",}}}
           
           color={"highEmphasis.main"}
-        >
+          >
           {title}
         </Typography>
       </Paper>
@@ -41,8 +43,9 @@ const Tile = ({ image, title }) => {
         src={require(`../../assets/images/${image}`)}
         width={"100%"}
         height={"100%"}
-      />
-    </Box>
+        />
+        </CardActionArea>
+    </Card>
   );
 };
 

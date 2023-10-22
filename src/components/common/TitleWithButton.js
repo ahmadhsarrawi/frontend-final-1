@@ -1,9 +1,9 @@
-import React from 'react'
-import { GrNext } from 'react-icons/gr';
-import { Box,Typography } from '@mui/material';
-import ButtonWithIcon from './ButtonWithIcon';
+import React from "react";
+import { GrNext } from "react-icons/gr";
+import { Box, Typography } from "@mui/material";
+import ButtonWithIcon from "./ButtonWithIcon";
 
-const TitleWithButton = ({titleColor,title,button,mb}) => {
+const TitleWithButton = ({ titleColor, title, button, mb }) => {
   return (
     <Box
       sx={{
@@ -14,8 +14,9 @@ const TitleWithButton = ({titleColor,title,button,mb}) => {
       }}
     >
       <Typography
-        sx={{ typography: { sm: "displayLarge", xs: "titleRegular" } }}
+        sx={{ typography: { sm: "displayLarge", xs: "displaySmall" } }}
         color={titleColor}
+        
       >
         {title}
       </Typography>
@@ -23,13 +24,13 @@ const TitleWithButton = ({titleColor,title,button,mb}) => {
         <ButtonWithIcon
           padding={"10px 8px"}
           type={"default"}
-          endIcon={<GrNext/>}
+          endIcon={<GrNext />}
         >
           View All
         </ButtonWithIcon>
       )}
     </Box>
   );
-}
+};
 
-export default TitleWithButton
+export default TitleWithButton;
