@@ -26,7 +26,8 @@ const theme = createTheme({
       sm: 555,
       sm2: 780,
       md: 960,
-      md2: 1120,
+      // edited
+      md2: 1130,
       lg: 1280,
       lg2: 1440,
       lg3: 1600,

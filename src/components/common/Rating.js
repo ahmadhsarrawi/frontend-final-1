@@ -29,11 +29,11 @@ function ratingHandler(rating) {
   return [...ratingArray];
 }
 
-const Rating = ({ rating, number }) => {
+const Rating = ({ rating, number ,gap,color}) => {
   return (
-    <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+    <Box sx={{display:'flex', alignItems:'center', justifyContent:'flex-start',gap:{gap}}}>
           <Box>{ratingHandler(rating)}</Box>
-          <Typography variant="titleMedium" color='primary.main' sx={{display:{xs:'none',sm:"inline"}}}>{number} Ratings</Typography>
+          <Typography variant="titleMedium" color={color} sx={{display:{xs:'none',sm:"inline"}}}>{number} Ratings</Typography>
     </Box>
   );
 };

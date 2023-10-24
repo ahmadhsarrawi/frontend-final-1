@@ -27,7 +27,6 @@ export default function Landing(props) {
         <IconTile image="icon-fill-cream.svg" title={"Eyewear"} />
       </HorizontalFlexContainer>
       <NewArrivals />
-
       <HandPickedCollections />
       <ShopByBrands />
       <Banner />

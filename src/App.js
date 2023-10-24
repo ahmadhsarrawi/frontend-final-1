@@ -6,19 +6,19 @@ import { ThemeProvider } from "@mui/material";
 import theme from "./components/common/Theme";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { Container } from "@mui/material";
+import Product from "./pages/Product";
 function App() {
+  
   return (
     <ThemeProvider theme={theme}>
       <ContextProvider>
         <BrowserRouter basename="frontend-final-1">
-          
             <Header />
             <Routes>
               <Route path="/" element={<Landing />} />
+              <Route path="/product" element={<Product/>}/>
             </Routes>
             <Footer />
-         
         </BrowserRouter>
       </ContextProvider> 
     </ThemeProvider>

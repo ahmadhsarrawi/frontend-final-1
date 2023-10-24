@@ -4,9 +4,10 @@ import ButtonWithIcon from "./ButtonWithIcon";
 import { PiHandbagSimple } from "react-icons/pi";
 import { TbHeart } from "react-icons/tb";
 import { Paper, Typography, IconButton,Box } from "@mui/material";
-
+import { NavLink } from "react-router-dom";
 const HorizontalCard = () => {
   return (
+    <NavLink to="/product">
     <Box
       sx={{
         borderRadius: "8px",
@@ -84,6 +85,8 @@ const HorizontalCard = () => {
         Add to bag
       </ButtonWithIcon>
     </Box>
+    </NavLink>
+    
   );
 };
 
