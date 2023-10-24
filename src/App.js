@@ -13,14 +13,14 @@ function App() {
     <ThemeProvider theme={theme}>
       <ContextProvider>
         <BrowserRouter basename="frontend-final-1">
-            <Header />
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/product" element={<Product/>}/>
-            </Routes>
-            <Footer />
+          <Header />
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/product" element={<Product />} />
+          </Routes>
+          <Footer />
         </BrowserRouter>
-      </ContextProvider> 
+      </ContextProvider>
     </ThemeProvider>
   );
 }

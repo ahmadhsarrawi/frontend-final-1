@@ -45,7 +45,7 @@ const Header = () => {
     `(max-width: ${theme.breakpoints.values.sm}px)`
   );
   const isTablet = useMediaQuery(
-    `(max-width:${theme.breakpoints.values.md2}px)`
+    `(max-width:${theme.breakpoints.values.md1}px)`
   );
   const handleChange = (newValue) => {
     setValue(newValue);
