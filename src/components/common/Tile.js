@@ -14,7 +14,7 @@ const Tile = ({ image, title }) => {
         
       }}
     >
-      <CardActionArea sx={{width:'100%',height:'100%'}} href="frontend-final-1/categories">
+      <CardActionArea sx={{width:'100%',height:'100%'}} href="/categories">
 
       <Paper
         elevation={0}

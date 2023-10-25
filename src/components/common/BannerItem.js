@@ -16,7 +16,7 @@ const BannerItem = ({
     objectFit: "cover",
     borderRadius: "16px",
   });
-  console.log(iconColor);
+
 
   return (
     <Box position="relative">
