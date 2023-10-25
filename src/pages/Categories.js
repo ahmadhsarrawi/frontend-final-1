@@ -22,10 +22,7 @@ const Categories = () => {
 
   }, []);
 
-  useEffect(() => {
-
-    ctx.category&&console.log(ctx.category.name);
-  },[ctx.category])
+  
 
   return (
     <>

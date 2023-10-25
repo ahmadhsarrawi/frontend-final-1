@@ -21,6 +21,7 @@ function App() {
             <Header />
             <Routes>
               <Route path="/" element={<Landing />} />
+              <Route path="/categories" element={<Categories />} />
             </Routes>
             <Footer />
          
