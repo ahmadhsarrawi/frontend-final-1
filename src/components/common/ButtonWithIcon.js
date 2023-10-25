@@ -77,7 +77,8 @@ const ButtonWithIcon = ({
       startIcon={startIcon}
       endIcon={endIcon}
       sx={{
-        
+        // this is modified by shahd
+        whiteSpace: "nowrap",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
