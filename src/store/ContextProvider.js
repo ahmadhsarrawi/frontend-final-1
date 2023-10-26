@@ -7,6 +7,7 @@ const ContextProvider = ({ children }) => {
   const [products, setProducts] = useState({});
   const [newArrivals, setNewArrivals] = useState({});
   const [handpicked, setHandpicked] = useState({});
+  const [product, setProduct] = useState({});
   const contextData = {
     category: category,
     setCategory: setCategory,
@@ -18,6 +19,8 @@ const ContextProvider = ({ children }) => {
     setNewArrivals: setNewArrivals,
     handpicked: handpicked,
     setHandpicked: setHandpicked,
+    product: product,
+    setProduct:setProduct,
     
   };
 

@@ -11,6 +11,8 @@ const Context = React.createContext({
   setNewArrivals: "",
   handpicked: "",
   setHandpicked: "",
+  product: '',
+  setProduct:"",
 });
 
 export default Context;

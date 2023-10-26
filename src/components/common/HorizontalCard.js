@@ -20,7 +20,7 @@ const HorizontalCard = ({
   images,
 }) => {
   return (
-    <NavLink to="/product" style={{ textDecoration: "none" }}>
+    <NavLink to={`/product?id=${id}`} style={{ textDecoration: "none" }}>
       <Box
         sx={{
           borderRadius: "8px",
