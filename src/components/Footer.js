@@ -14,7 +14,6 @@ import logos from "../assets/images/logos.svg";
 import TitledList from "./common/TitledList";
 import LocationIcon from "../assets/images/LocationIcon";
 import theme from "./common/Theme";
-import Container from "./common/Container";
 
 const list1Info = {
   title: "Shop by Category",

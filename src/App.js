@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React  from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing";
 
@@ -22,6 +22,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/categories" element={<Categories />} />
+              <Route path="/product" element={<Product />} />
             </Routes>
             <Footer />
          

@@ -11,7 +11,7 @@ const BrandTile = ({ image }) => {
       },
       // width:{xs:'100px'}
     }}>
-      <img src={image} width={'100%'} height={'100%'}/>
+      <img alt="brand" src={image} width={'100%'} height={'100%'}/>
     </Box>
   );
 };

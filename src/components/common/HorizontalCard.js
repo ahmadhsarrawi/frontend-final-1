@@ -5,9 +5,22 @@ import { PiHandbagSimple } from "react-icons/pi";
 import { TbHeart } from "react-icons/tb";
 import { Paper, Typography, IconButton, Box } from "@mui/material";
 import { NavLink } from "react-router-dom";
-const HorizontalCard = () => {
+const HorizontalCard = ({
+  id,
+  name,
+  description,
+  color,
+  price,
+  discount,
+  rating,
+  isLimited,
+  stock,
+  category_id,
+  brand_id,
+  images,
+}) => {
   return (
-    <NavLink to="/product">
+    <NavLink to="/product" style={{ textDecoration: "none" }}>
       <Box
         sx={{
           borderRadius: "8px",
@@ -23,20 +36,25 @@ const HorizontalCard = () => {
         <Box
           sx={{ borderRadius: "8px", overflow: "hidden", position: "relative" }}
         >
-          <Paper
-            elevation={0}
-            sx={{
-              position: "absolute",
-              borderRadius: "4px",
-              padding: "9px 20px",
-              bgcolor: "highlight.main",
-              color: "bright.main",
-              top: "15px",
-              right: "15px",
-            }}
-          >
-            <Typography variant="titleMedium">Trending</Typography>
-          </Paper>
+          {rating >= 4.5 ? (
+            <Paper
+              elevation={0}
+              sx={{
+                position: "absolute",
+                borderRadius: "4px",
+                padding: "9px 20px",
+                bgcolor: "highlight.main",
+                color: "bright.main",
+                top: "15px",
+                right: "15px",
+              }}
+            >
+              <Typography variant="titleMedium">Trending</Typography>
+            </Paper>
+          ) : (
+            ""
+          )}
+
           <img
             src={require("../../assets/images/pinkBag.png")}
             width={"100%"}
@@ -60,20 +78,22 @@ const HorizontalCard = () => {
         <Typography variant="bodyRegular" color={"lowEmphasis.main"}>
           Blossom Pouch
         </Typography>
-        <Rating rating={4} number={43} />
+        <Rating rating={rating} number={43} />
         <Box sx={{ display: "flex", gap: "6px" }}>
           <Typography variant="bodyMedium" color={"highEmphasis.main"}>
-            $39.49
+            {`$${discount ? price - discount : price}`}
           </Typography>
           <Typography
             variant="labelLarge"
             color={"lowEmphasis.main"}
             sx={{ textDecoration: "line-through" }}
           >
-            $78.66
+            {discount ?'$'+ price : ""}
           </Typography>
           <Typography variant="bodyRegular" color={"red.main"}>
-            50% OFF
+            {`${
+              discount ? ((discount * 100) / price).toFixed(0) + "% OFF" : ""
+            }`}
           </Typography>
         </Box>
         <ButtonWithIcon

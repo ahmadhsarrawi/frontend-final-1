@@ -19,12 +19,12 @@ const ShopByBrands = () => {
           mdSize={2}
           xsSize={4}
           data={[
-            <BrandTile image={brand1} />,
-            <BrandTile image={brand2} />,
-            <BrandTile image={brand3} />,
-            <BrandTile image={brand4} />,
-            <BrandTile image={brand5} />,
-            <BrandTile image={brand6} />,
+            <BrandTile id={1} image={brand1} />,
+            <BrandTile id={13} image={brand2} />,
+            <BrandTile id={14} image={brand3} />,
+            <BrandTile id={12} image={brand4} />,
+            <BrandTile id={121} image={brand5} />,
+            <BrandTile id={122} image={brand6} />,
           ]}
         ></GridContainer>
       </Container>

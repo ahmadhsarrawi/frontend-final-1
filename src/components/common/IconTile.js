@@ -24,7 +24,7 @@ const IconTile = ({ image, title }) => {
           flexGrow:'1'
         }}
       >
-        <img
+        <img alt='category'
           src={require(`../../assets/icons/${image}`)}
           style={{ width: "100%", height: "100%" }}
         />

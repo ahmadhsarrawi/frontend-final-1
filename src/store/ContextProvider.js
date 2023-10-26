@@ -4,23 +4,26 @@ import Context from "./context";
 const ContextProvider = ({ children }) => {
   const [category, setCategory] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
-const contextData = {
-  category: category,
-  setCategory: setCategory,
-  isLoading: isLoading,
-  setIsLoading:setIsLoading,
-};
-
+  const [products, setProducts] = useState({});
+  const [newArrivals, setNewArrivals] = useState({});
+  const [handpicked, setHandpicked] = useState({});
+  const contextData = {
+    category: category,
+    setCategory: setCategory,
+    isLoading: isLoading,
+    setIsLoading: setIsLoading,
+    products: products,
+    setProducts: setProducts,
+    newArrivals: newArrivals,
+    setNewArrivals: setNewArrivals,
+    handpicked: handpicked,
+    setHandpicked: setHandpicked,
+    
+  };
 
   return (
     <Context.Provider
-      value={{
-        category: category,
-        setCategory: setCategory,
-        isLoading: isLoading,
-        setIsLoading: setIsLoading,
-      }}
+      value={contextData}
     >
       {children}
     </Context.Provider>
