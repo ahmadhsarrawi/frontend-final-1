@@ -4,7 +4,7 @@ import ButtonWithIcon from "./ButtonWithIcon";
 import { PiHandbagSimple } from "react-icons/pi";
 import { TbHeart } from "react-icons/tb";
 import { Paper, Typography, IconButton, Box } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 const HorizontalCard = ({
   id,
   name,
@@ -20,7 +20,7 @@ const HorizontalCard = ({
   images,
 }) => {
   return (
-    <NavLink to={`/product?id=${id}`} style={{ textDecoration: "none" }}>
+    <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
       <Box
         sx={{
           borderRadius: "8px",
@@ -54,7 +54,6 @@ const HorizontalCard = ({
           ) : (
             ""
           )}
-
           <img
             src={require("../../assets/images/pinkBag.png")}
             width={"100%"}
@@ -88,7 +87,7 @@ const HorizontalCard = ({
             color={"lowEmphasis.main"}
             sx={{ textDecoration: "line-through" }}
           >
-            {discount ?'$'+ price : ""}
+            {discount ? "$" + price : ""}
           </Typography>
           <Typography variant="bodyRegular" color={"red.main"}>
             {`${
@@ -104,8 +103,7 @@ const HorizontalCard = ({
           Add to bag
         </ButtonWithIcon>
       </Box>
-    </NavLink>
+    </Link>
   );
 };
-
 export default HorizontalCard;

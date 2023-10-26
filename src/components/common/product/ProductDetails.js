@@ -1,30 +1,29 @@
-import React,{useState} from 'react';
-import { Grid, Typography,Box,Button,Divider } from '@mui/material';
-import theme from '../Theme';
+import React, { useState } from "react";
+import { Grid, Typography, Box, Button, Divider } from "@mui/material";
+import theme from "../Theme";
 import { ThemeProvider } from "@mui/material/styles";
-import Rating from '../Rating';
-import ButtonWithIcon from '../ButtonWithIcon';
-import { ReactComponent as BagIcon } from '../../../assets/icons/bag.svg';
-import {ReactComponent as Wishlist} from '../../../assets/images/wishlist.svg';
-import { margin } from '@mui/system';
-export default function ProductDetails() {
-    const [counter, setCounter] = useState(1);
-
-    const incCounter= () => {
-        setCounter((prevCount) => prevCount + 1);
-      };
-      const decCounter = () => {
-        if (counter > 1) {
-          setCounter((prevCount) => prevCount - 1);
-        }
-      };
+import Rating from "../Rating";
+import ButtonWithIcon from "../ButtonWithIcon";
+import { ReactComponent as BagIcon } from "../../../assets/icons/bag.svg";
+import { ReactComponent as Wishlist } from "../../../assets/images/wishlist.svg";
+import { margin } from "@mui/system";
+export default function ProductDetails({ name, description, rate }) {
+  const [counter, setCounter] = useState(1);
+  const incCounter = () => {
+    setCounter((prevCount) => prevCount + 1);
+  };
+  const decCounter = () => {
+    if (counter > 1) {
+      setCounter((prevCount) => prevCount - 1);
+    }
+  };
   return (
     <ThemeProvider theme={theme}>
       <Grid item xs={12} md={6} width="50%">
         <Grid container direction={"column"}>
           <Box>
             <Typography variant="h1" fontWeight="600" sx={{ fontSize: "34px" }}>
-              Coach
+              {name}
             </Typography>
             <Typography
               sx={{
@@ -32,13 +31,13 @@ export default function ProductDetails() {
                 color: `${theme.palette.lowEmphasis.main}`,
               }}
             >
-              Leather Coach Bag with adjustable straps.
+              {description}
             </Typography>
           </Box>
         </Grid>
         <Box sx={{ marginTop: "32px", marginBottom: "32px" }}>
           <Rating
-            rating="4"
+            rating={rate}
             number="250"
             gap="14px"
             color={theme.palette.lightText.main}
@@ -94,7 +93,7 @@ export default function ProductDetails() {
         </Box>
         {/* buttons */}
         <Grid container>
-          <Grid item xs={12} md={7} >
+          <Grid item xs={12} md={7}>
             <ButtonWithIcon
               padding="10px 120px"
               type="primary"
@@ -104,7 +103,7 @@ export default function ProductDetails() {
               Add to bag
             </ButtonWithIcon>
           </Grid>
-          <Grid item xs={12} md={5} >
+          <Grid item xs={12} md={5}>
             <ButtonWithIcon
               padding="10px 50px"
               type="outlined"

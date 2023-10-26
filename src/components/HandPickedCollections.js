@@ -1,15 +1,20 @@
-import React,{useEffect,useContext} from "react";
+import React, { useEffect, useContext } from "react";
 import GridContainer from "./common/GridContainer";
 import Tile from "./common/Tile";
-import { Paper, Container } from "@mui/material";
+import { Paper, Container, Grid } from "@mui/material";
 import TitleWithButton from "./common/TitleWithButton";
 import Context from "../store/context";
 import fetchData from "../services/APIs";
-
+import SpinLoader from "./common/SpinLoader";
 
 const HandPickedCollections = () => {
   const ctx = useContext(Context);
-  
+  useEffect(() => {
+    ctx.setHandpicked(null);
+    fetchData("products/handpicked-collections").then((data) =>
+      ctx.setHandpicked(data)
+    );
+  }, []);
   return (
     <Paper
       elevation={0}
@@ -26,16 +31,19 @@ const HandPickedCollections = () => {
           titleColor={"bright.main"}
           mb="23px"
         />
-        <GridContainer
-          xsSize={6}
-          mdSize={3}
-          data={[
-            <Tile id={2} image={"perfume.png"} title={"Personal Care"} />,
-            <Tile id={21} image={"bag.png"} title={"Handbags"} />,
-            <Tile id={23} image={"watch.png"} title={"Wrist Watches"} />,
-            <Tile id={24} image={"glasses.png"} title={"Sun Glasses"} />,
-          ]}
-        ></GridContainer>
+        {ctx.handpicked ? (
+          <GridContainer xsSize={6} mdSize={3}>
+
+            {ctx.handpicked?ctx.handpicked.data.map(item => {
+              return <Grid key={item.id} item xs={6} md={3}>
+                <Tile image={item.image} id={item.id} />
+              </Grid>
+            }):''}
+
+          </GridContainer>
+        ) : (
+          <SpinLoader />
+        )}
       </Container>
     </Paper>
   );

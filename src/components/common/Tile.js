@@ -38,7 +38,7 @@ const Tile = ({ image, title }) => {
           </Typography>
         </Paper>
         <img
-          src={require(`../../assets/images/${image}`)}
+          src={image}
           width={"100%"}
           height={"100%"}
         />

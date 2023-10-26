@@ -35,6 +35,8 @@ const NewArrivals = () => {
             {ctx.newArrivals.data &&
               ctx.newArrivals.data.map((item) => (
                 <HorizontalCard
+                  key={item.id}
+                  image={item.image}
                   id={item.id}
                   name={item.name}
                   description={item.description}
