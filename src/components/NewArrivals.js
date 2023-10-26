@@ -22,7 +22,7 @@ const NewArrivals = () => {
   // }, [ctx.products]);
   return (
     <>
-      {ctx.newArrivals ? (
+      {!ctx.newArrivals ? (
         <SpinLoader />
       ) : (
         <Container maxWidth="100%">
