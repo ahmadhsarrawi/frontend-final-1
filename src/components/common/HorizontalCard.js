@@ -17,7 +17,7 @@ const HorizontalCard = ({
   stock,
   category_id,
   brand_id,
-  images,
+  image,
 }) => {
   return (
     <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
@@ -55,7 +55,7 @@ const HorizontalCard = ({
             ""
           )}
           <img
-            src={require("../../assets/images/pinkBag.png")}
+            src={image}
             width={"100%"}
             height={"100%"}
           />
