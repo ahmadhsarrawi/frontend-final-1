@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Tabs, Tab, Box, Typography } from "@mui/material";
 import theme from "../Theme";
 import { ThemeProvider } from "@mui/material/styles";
+import RelatedProducts from "./RelatedProducts"; // Import your RelatedProducts component
 
-export default function ProductTabs() {
+export default function ProductTabs({longDesc,categoryId}) {
   const [tabValue, setTabValue] = useState("1");
   const handleChange = (event, newValue) => {
     setTabValue(newValue);
@@ -11,8 +12,7 @@ export default function ProductTabs() {
 
   // Define descriptions for each tab
   const descriptions = {
-    "1": "This is the description for Product Description.",
-    "2": "This is the description for Related Products.",
+    "1": `${longDesc}`,
     "3": "This is the description for Ratings and Reviews.",
   };
 
@@ -88,9 +88,15 @@ export default function ProductTabs() {
           />
         </Tabs>
 
-        {/* Description rendering based on the selected tab value */}
+        {/* Conditional rendering based on the selected tab value */}
         <Box sx={{ margin: "20px 0", textAlign: "center" }}>
-          <Typography sx={{textAlign:'left',color:`${theme.palette.lowEmphasis.main}`}}>{descriptions[tabValue]}</Typography>
+          {tabValue === "2" ? (
+            <RelatedProducts categoryId={categoryId}/>
+          ) : (
+            <Typography sx={{ textAlign: "left", color: `${theme.palette.lowEmphasis.main}` }}>
+              {descriptions[tabValue]}
+            </Typography>
+          )}
         </Box>
       </Box>
     </ThemeProvider>

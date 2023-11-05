@@ -7,8 +7,12 @@ import CustomSeparator from "../components/common/product/CustomSeparator";
 import Context from "../store/context";
 import fetchData from "../services/APIs";
 import { useParams } from "react-router-dom";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 const Product = () => {
   const { id } = useParams();
+  const isMobile = useMediaQuery("(max-width:600px)");
+
   const ctx = useContext(Context);
   useEffect(() => {
     ctx.setProduct([]);
@@ -22,14 +26,24 @@ const Product = () => {
       </Box>
       <Grid container spacing={3} sx={{ display: "flex" }}>
         {/* Product image */}
-        <ProductImages />
-        {ctx.product?<ProductDetails
-          name={ctx.product.name}
-          description={ctx.product.description}
-          rate={ctx.product.rating}
-        />:<></>}
+        {ctx.product ? <ProductImages product={ctx.product.image} /> : <></>}
+        {ctx.product ? (
+          <ProductDetails
+            name={ctx.product.name}
+            description={ctx.product.description}
+            rate={ctx.product.rating}
+            discount={ctx.product.discount}
+            price={ctx.product.price}
+          />
+        ) : (
+          <></>
+        )}
       </Grid>
-      <ProductDescription />
+      {(ctx.product&&!isMobile) ? (
+        <ProductDescription longDesc={ctx.product ? ctx.product.longDescription: ""}categoryId={ctx.product ? ctx.product.category_id: ""} />
+      ) : (
+        <p></p> 
+      )}{" "}
     </Container>
   );
 };

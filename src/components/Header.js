@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -21,17 +21,20 @@ import search from "../assets/images/search.svg";
 import notification from "../assets/images/notification.svg";
 import menu from "../assets/images/menu.svg";
 import theme from "./common/Theme";
-const HeaderTabs = ({ value, handleChange }) => (
+import Context from "../store/context";
+import fetchData from "../services/APIs";
+
+const HeaderTabs = ({ value, handleChange, categories }) => (
   <Tabs
     value={value}
     onChange={handleChange}
     classes={{ indicator: "indicator-class" }}
   >
-    <Tab label="Handbags" sx={tabStyles} />
-    <Tab label="Watches" sx={tabStyles} />
-    <Tab label="Skincare" sx={tabStyles} />
-    <Tab label="Jewellery" sx={tabStyles} />
-    <Tab label="Apparels" sx={tabStyles} />
+    {categories?.map((category, index) => (
+      index <5 && (
+        <Tab key={index} label={category.name} sx={tabStyles} />
+      )
+    ))}
   </Tabs>
 );
 const tabStyles = {
@@ -39,7 +42,9 @@ const tabStyles = {
   fontSize: "14px",
   color: "#171520",
 };
+
 const Header = () => {
+  const ctx = useContext(Context);
   const [value, setValue] = React.useState(0);
   const isMobile = useMediaQuery(
     `(max-width: ${theme.breakpoints.values.sm}px)`
@@ -47,20 +52,39 @@ const Header = () => {
   const isTablet = useMediaQuery(
     `(max-width:${theme.breakpoints.values.md1}px)`
   );
-  const handleChange = (newValue) => {
+
+  useEffect(() => {
+    async function fetchDataAsync() {
+      try {
+        const data = await fetchData("categories/");
+        ctx.setCategories(data);
+        ctx.setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchDataAsync();
+  }, [ctx]); 
+ 
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   const iconsData = [
     { icon: wishlist, alt: "heart icon" },
     { icon: profile, alt: "profile icon" },
     { icon: bag, alt: "bag icon" },
   ];
+
   const mobileIconsData = [
     { icon: addToHome, alt: "heart icon" },
     { icon: search, alt: "profile icon" },
     { icon: notification, alt: "bag icon" },
   ];
+
   const iconSet = isMobile ? mobileIconsData : iconsData;
+
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="100%">
@@ -111,7 +135,7 @@ const Header = () => {
                     src={logo}
                     alt="logo"
                   />
-                  <HeaderTabs value={value} handleChange={handleChange} />
+                  <HeaderTabs value={value} handleChange={handleChange} categories={ctx.categories}/>
                 </>
               )}
               <Stack
@@ -133,4 +157,5 @@ const Header = () => {
     </ThemeProvider>
   );
 };
+
 export default Header;

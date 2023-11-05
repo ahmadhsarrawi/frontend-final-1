@@ -9,6 +9,9 @@ const ContextProvider = ({ children }) => {
   const [handpicked, setHandpicked] = useState(null);
   const [product, setProduct] = useState(null);
   const [brands, setBrands] = useState(null);
+  const [relatedProducts, setRelatedProducts] = useState(null);
+  const [categories, setCategories] = useState(null);
+
   const contextData = {
     category: category,
     setCategory: setCategory,
@@ -24,7 +27,10 @@ const ContextProvider = ({ children }) => {
     setProduct: setProduct,
     brands: brands,
     setBrands:setBrands,
-    
+    relatedProducts:relatedProducts,
+    setRelatedProducts:setRelatedProducts,
+    categories:categories,
+    setCategories:setCategories,
   };
 
   return (

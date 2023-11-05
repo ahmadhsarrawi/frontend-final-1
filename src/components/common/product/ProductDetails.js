@@ -7,7 +7,7 @@ import ButtonWithIcon from "../ButtonWithIcon";
 import { ReactComponent as BagIcon } from "../../../assets/icons/bag.svg";
 import { ReactComponent as Wishlist } from "../../../assets/images/wishlist.svg";
 import { margin } from "@mui/system";
-export default function ProductDetails({ name, description, rate }) {
+export default function ProductDetails({ name, description, rate,discount,price }) {
   const [counter, setCounter] = useState(1);
   const incCounter = () => {
     setCounter((prevCount) => prevCount + 1);
@@ -43,7 +43,34 @@ export default function ProductDetails({ name, description, rate }) {
             color={theme.palette.lightText.main}
           />
         </Box>
-        <Box sx={{ marginTop: "32px", marginBottom: "10px" }}>Price</Box>
+        <Box sx={{ marginTop: "32px", marginBottom: "10px" }}>
+          <Typography
+            fontSize="2.5rem"
+            variant="bodyMedium"
+            color={"highEmphasis.main"}
+          >
+            {`$${discount ? price - discount : price}`}
+          </Typography>
+          <Typography
+            fontSize="2.12rem"
+            variant="labelLarge"
+            color={theme.palette.lightText.main}
+            sx={{ textDecoration: "line-through", marginLeft: "10px" }}
+          >
+            {discount ? "$" + price : ""}
+          </Typography>
+          <Typography
+            fontSize="1.25rem"
+            variant="bodyRegular"
+            color={"red.main"}
+            sx={{marginLeft: "10px" }}
+
+          >
+            {`${
+              discount ? ((discount * 100) / price).toFixed(0) + "% OFF" : ""
+            }`}
+          </Typography>
+        </Box>
         <Divider />
         {/* quantity section */}
         <Box
@@ -93,7 +120,7 @@ export default function ProductDetails({ name, description, rate }) {
         </Box>
         {/* buttons */}
         <Grid container>
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} lg={7} sx={{marginBottom:"10px"}}>
             <ButtonWithIcon
               padding="10px 120px"
               type="primary"
@@ -103,12 +130,13 @@ export default function ProductDetails({ name, description, rate }) {
               Add to bag
             </ButtonWithIcon>
           </Grid>
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} lg={5}>
             <ButtonWithIcon
               padding="10px 50px"
               type="outlined"
               startIcon={<Wishlist />}
               fontSize="0.7rem"
+             
             >
               Add to Wishlist
             </ButtonWithIcon>
