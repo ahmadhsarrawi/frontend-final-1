@@ -1,22 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing";
-import ContextProvider from "./store/context";
-
-
-
-
+import { ThemeProvider } from "@mui/material";
+import theme from "./components/common/Theme";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Product from "./pages/Product";
+import Categories from "./pages/Categories";
+import ContextProvider from "./store/ContextProvider";
 function App() {
-
   return (
-    <ContextProvider>
-      <BrowserRouter basename="frontend-final-1">
-        <Routes>
-          <Route path="/" element={<Landing />} />
-        </Routes>
-      </BrowserRouter>
-    </ContextProvider>
+    <ThemeProvider theme={theme}>
+      <ContextProvider>
+        <BrowserRouter basename="frontend-final-1">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/product/:id" element={<Product />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </ContextProvider>
+    </ThemeProvider>
   );
 }
-
 export default App;
