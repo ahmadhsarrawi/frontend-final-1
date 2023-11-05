@@ -31,6 +31,7 @@ const HorizontalCard = ({
           minWidth: { xs: "150px", md: "240px" },
           flexGrow: "1",
           mb: "16px",
+          
         }}
       >
         <Box
@@ -55,9 +56,11 @@ const HorizontalCard = ({
             ""
           )}
           <img
-            src={image}
+            src={'https://res.cloudinary.com/drq2xwi3o/image/upload/v1697625193/E-Commerce/2_g7egru.webp'}
             width={"100%"}
             height={"100%"}
+            alt='a bag'
+            
           />
         </Box>
         <Box
