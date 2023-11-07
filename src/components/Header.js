@@ -21,6 +21,7 @@ import search from "../assets/images/search.svg";
 import notification from "../assets/images/notification.svg";
 import menu from "../assets/images/menu.svg";
 import theme from "./common/Theme";
+import { Link } from "react-router-dom";
 const HeaderTabs = ({ value, handleChange }) => (
   <Tabs
     value={value}
@@ -52,7 +53,7 @@ const Header = () => {
   };
   const iconsData = [
     { icon: wishlist, alt: "heart icon" },
-    { icon: profile, alt: "profile icon" },
+    { icon: profile, alt: "profile icon" ,linkPage:"/sign-in"},
     { icon: bag, alt: "bag icon" },
   ];
   const mobileIconsData = [
@@ -119,11 +120,14 @@ const Header = () => {
                 spacing={0.5}
                 style={{ marginLeft: "auto" }}
               >
-                {!isMobile && <SearchWithIcon />}
+              
+              {!isMobile && <SearchWithIcon />}
                 {iconSet.map((data, index) => (
-                  <IconButton key={index}>
-                    <img src={data.icon} alt={data.alt} />
-                  </IconButton>
+                  <Link to={data.linkPage} key={index}> {/* Use data.linkPage as the path */}
+                    <IconButton>
+                      <img src={data.icon} alt={data.alt} />
+                    </IconButton>
+                  </Link>
                 ))}
               </Stack>
             </Stack>

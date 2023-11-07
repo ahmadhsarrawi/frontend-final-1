@@ -1,45 +1,63 @@
 import * as React from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link as RouterLink } from 'react-router-dom';
+import axios from 'axios';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
+function isValidEmail(email) {
+  const emailRegex = /^\S+@\S+$/i;
+  return emailRegex.test(email);
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
+function isValidPassword(password) {
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+  return passwordRegex.test(password);
+}
+
+function PasswordValidationText() {
+  return (
+    <div>
+      Password must contain at least 8 characters, including upper and lower case letters, and a number.
+    </div>
+  );
+}
 
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const { handleSubmit, control, reset, formState: { errors } } = useForm();
 
+  const onSubmit = async (data) => {
+    const fullName = `${data.firstName} ${data.lastName}`;
+
+    try {
+      const response = await axios.post(
+        "https://e-store-comerce.onrender.com/auth/signup",
+        {
+          name: fullName,
+          email: data.email,
+          password: data.password,
+        }
+      );
+      console.log(response.data);
+      
+      reset();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -58,54 +76,92 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
+                <Controller
                   name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: 'First name is required' }}
+                  render={({ field }) => (
+                    <TextField
+                      autoComplete="given-name"
+                      label="First Name"
+                      fullWidth
+                      id="firstName"
+                      {...field}
+                      error={!!errors.firstName}
+                      helperText={errors.firstName ? errors.firstName.message : null}
+                    />
+                  )}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
+                <Controller
                   name="lastName"
-                  autoComplete="family-name"
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: 'Last name is required' }}
+                  render={({ field }) => (
+                    <TextField
+                      label="Last Name"
+                      fullWidth
+                      id="lastName"
+                      {...field}
+                      error={!!errors.lastName}
+                      helperText={errors.lastName ? errors.lastName.message : null}
+                    />
+                  )}
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
+                <Controller
                   name="email"
-                  autoComplete="email"
+                  control={control}
+                  defaultValue=""
+                  rules={{
+                    required: 'Email is required',
+                    validate: (value) => isValidEmail(value) || 'Invalid email format',
+                  }}
+                  render={({ field }) => (
+                    <TextField
+                      label="Email Address"
+                      fullWidth
+                      id="email"
+                      {...field}
+                      error={!!errors.email}
+                      helperText={errors.email ? errors.email.message : null}
+                    />
+                  )}
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
+                <Controller
                   name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  control={control}
+                  defaultValue=""
+                  rules={{
+                    required: 'Password is required',
+                    validate: (value) => isValidPassword(value) || 'Invalid password format',
+                  }}
+                  render={({ field }) => (
+                    <TextField
+                      label="Password"
+                      type="password"
+                      fullWidth
+                      id="password"
+                      {...field}
+                      error={!!errors.password}
+                      helperText={errors.password ? <PasswordValidationText /> : null}
+                    />
+                  )}
                 />
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  label="I want to receive inspiration, marketing promotions, and updates via email."
                 />
               </Grid>
             </Grid>
@@ -119,14 +175,13 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <RouterLink to="/sign-in" variant="body2">
                   Already have an account? Sign in
-                </Link>
+                </RouterLink>
               </Grid>
             </Grid>
-          </Box>
+          </form>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
