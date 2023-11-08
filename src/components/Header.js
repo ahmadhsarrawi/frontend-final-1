@@ -21,15 +21,11 @@ import search from "../assets/images/search.svg";
 import notification from "../assets/images/notification.svg";
 import menu from "../assets/images/menu.svg";
 import theme from "./common/Theme";
-<<<<<<< HEAD
 import Context from "../store/context";
 import fetchData from "../services/APIs";
+import { Link } from "react-router-dom";
 
 const HeaderTabs = ({ value, handleChange, categories }) => (
-=======
-import { Link } from "react-router-dom";
-const HeaderTabs = ({ value, handleChange }) => (
->>>>>>> aaf90937b6c9a8022c30460cd4f04c20499460f5
   <Tabs
     value={value}
     onChange={handleChange}
@@ -70,7 +66,7 @@ const Header = () => {
     }
 
     fetchDataAsync();
-  }, [ctx]); 
+  }, []); 
  
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -90,7 +86,9 @@ const Header = () => {
 
   const iconSet = isMobile ? mobileIconsData : iconsData;
 
+  
   return (
+
     <ThemeProvider theme={theme}>
       <Container maxWidth="100%">
         <AppBar

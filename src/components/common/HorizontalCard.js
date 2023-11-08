@@ -29,6 +29,9 @@ const HorizontalCard = ({button,
           gap: "8px",
           flexShrink: "1",
           minWidth: { xs: "150px", md: "240px" },
+          maxWidth:'284px',
+          
+          maxHeight:'448px',
           flexGrow: "1",
           mb: "16px",
         }}
@@ -59,7 +62,8 @@ const HorizontalCard = ({button,
               "https://res.cloudinary.com/drq2xwi3o/image/upload/v1697625193/E-Commerce/2_g7egru.webp"
             }
             width={"100%"}
-            height={"100%"}
+            style={{aspectRatio:1/1}}
+            // height={"100%"}
             alt="a bag"
           />
         </Box>
@@ -80,7 +84,7 @@ const HorizontalCard = ({button,
         <Typography variant="bodyRegular" color={"lowEmphasis.main"}>
           Blossom Pouch
         </Typography>
-        <Rating rating={rating} number={43} />
+        <Rating rating={rating} number={43} gap={'30px'}/>
         <Box sx={{ display: "flex", gap: "6px" }}>
           <Typography variant="bodyMedium" color={"highEmphasis.main"}>
             {`$${discount ? price - discount : price}`}

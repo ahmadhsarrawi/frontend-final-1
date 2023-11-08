@@ -23,11 +23,7 @@ console.log(ctx.categories);
               {ctx.categories ? ctx.categories.map((item) => {
                 return <IconTile image={item.image} title={item.name} key={item.id} id={ item.id} />
               }):<SpinLoader/>}
-        {/* <IconTile image="icon-fill-cream.svg" title={"Skincare"} />
-        <IconTile image="icon-fill-ring.svg" title={"Jewellery"} />
-        <IconTile image="icon-fill-bag.svg" title={"Handbags"} />
-        <IconTile image="icon-fill-watch.svg" title={"Watches"} />
-        <IconTile image="icon-fill-cream.svg" title={"Eyewear"} /> */}
+       
       </HorizontalFlexContainer>
     </Container>
   );
