@@ -21,10 +21,15 @@ import search from "../assets/images/search.svg";
 import notification from "../assets/images/notification.svg";
 import menu from "../assets/images/menu.svg";
 import theme from "./common/Theme";
+<<<<<<< HEAD
 import Context from "../store/context";
 import fetchData from "../services/APIs";
 
 const HeaderTabs = ({ value, handleChange, categories }) => (
+=======
+import { Link } from "react-router-dom";
+const HeaderTabs = ({ value, handleChange }) => (
+>>>>>>> aaf90937b6c9a8022c30460cd4f04c20499460f5
   <Tabs
     value={value}
     onChange={handleChange}
@@ -73,7 +78,7 @@ const Header = () => {
 
   const iconsData = [
     { icon: wishlist, alt: "heart icon" },
-    { icon: profile, alt: "profile icon" },
+    { icon: profile, alt: "profile icon" ,linkPage:"/sign-in"},
     { icon: bag, alt: "bag icon" },
   ];
 
@@ -143,11 +148,14 @@ const Header = () => {
                 spacing={0.5}
                 style={{ marginLeft: "auto" }}
               >
-                {!isMobile && <SearchWithIcon />}
+              
+              {!isMobile && <SearchWithIcon />}
                 {iconSet.map((data, index) => (
-                  <IconButton key={index}>
-                    <img src={data.icon} alt={data.alt} />
-                  </IconButton>
+                  <Link to={data.linkPage} key={index}> {/* Use data.linkPage as the path */}
+                    <IconButton>
+                      <img src={data.icon} alt={data.alt} />
+                    </IconButton>
+                  </Link>
                 ))}
               </Stack>
             </Stack>
