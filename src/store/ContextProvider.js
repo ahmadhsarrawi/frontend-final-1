@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Context from "./context";
 
 const ContextProvider = ({ children }) => {
   const [category, setCategory] = useState(null);
+  const [categoryProducts, setCategoryProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState({});
   const [newArrivals, setNewArrivals] = useState(null);
@@ -26,20 +27,16 @@ const ContextProvider = ({ children }) => {
     product: product,
     setProduct: setProduct,
     brands: brands,
-    setBrands:setBrands,
-    relatedProducts:relatedProducts,
-    setRelatedProducts:setRelatedProducts,
-    categories:categories,
-    setCategories:setCategories,
+    setBrands: setBrands,
+    relatedProducts: relatedProducts,
+    setRelatedProducts: setRelatedProducts,
+    categories: categories,
+    setCategories: setCategories,
+    categoryProducts: categoryProducts,
+    setCategoryProducts:setCategoryProducts,
   };
 
-  return (
-    <Context.Provider
-      value={contextData}
-    >
-      {children}
-    </Context.Provider>
-  );
+  return <Context.Provider value={contextData}>{children}</Context.Provider>;
 };
 
 export default ContextProvider;

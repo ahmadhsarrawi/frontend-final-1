@@ -1,36 +1,39 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-
-const IconTile = ({ image, title }) => {
+import { NavLink } from "react-router-dom";
+const IconTile = ({ image, title ,id}) => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        mb: "14px",
-        gap: "5px",
-        justifyContent: "center",
-      }}
-    >
+    <NavLink to={'/categories/'+id} style={{textDecoration:'none'}}>
       <Box
         sx={{
-          width: "58px",
-          height: "58px",
-          aspectRatio:'1/1',
-          borderRadius: "8px",
-          bgcolor: "accent.main",
-          p: "8px",
-          flexGrow:'1'
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          mb: "14px",
+          gap: "5px",
+          justifyContent: "center",
         }}
       >
-        <img alt='category'
-          src={require(`../../assets/icons/${image}`)}
-          style={{ width: "100%", height: "100%" }}
-        />
+        <Box
+          sx={{
+            width: "58px",
+            height: "58px",
+            aspectRatio: "1/1",
+            borderRadius: "8px",
+            bgcolor: "accent.main",
+            p: "8px",
+            flexGrow: "1",
+          }}
+        >
+          <img
+            alt="category"
+            src={image}
+            style={{ width: "100%", height: "100%" }}
+          />
+        </Box>
+        <Typography variant="Link">{title}</Typography>
       </Box>
-      <Typography variant="Link">{title}</Typography>
-    </Box>
+    </NavLink>
   );
 };
 

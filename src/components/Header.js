@@ -135,7 +135,7 @@ const Header = () => {
                     src={logo}
                     alt="logo"
                   />
-                  <HeaderTabs value={value} handleChange={handleChange} categories={ctx.categories}/>
+                  <HeaderTabs value={value} handleChange={handleChange} categories={ctx.categories||[]}/>
                 </>
               )}
               <Stack

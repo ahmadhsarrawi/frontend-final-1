@@ -11,7 +11,7 @@ const HorizontalFlexContainer = ({ children, bgColor, mobileOnly }) => {
         bgcolor: `${bgColor}`,
         borderRadius: "0",
         py: "18px",
-        [theme.breakpoints.up("sm")]: {
+        [theme.breakpoints.up("sm2")]: {
           display: `${mobileOnly && "none"}`,
         },
       }}

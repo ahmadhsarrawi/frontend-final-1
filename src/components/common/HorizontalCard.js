@@ -5,7 +5,7 @@ import { PiHandbagSimple } from "react-icons/pi";
 import { TbHeart } from "react-icons/tb";
 import { Paper, Typography, IconButton, Box } from "@mui/material";
 import { Link } from "react-router-dom";
-const HorizontalCard = ({
+const HorizontalCard = ({button,
   id,
   name,
   description,
@@ -31,7 +31,6 @@ const HorizontalCard = ({
           minWidth: { xs: "150px", md: "240px" },
           flexGrow: "1",
           mb: "16px",
-          
         }}
       >
         <Box
@@ -56,11 +55,12 @@ const HorizontalCard = ({
             ""
           )}
           <img
-            src={'https://res.cloudinary.com/drq2xwi3o/image/upload/v1697625193/E-Commerce/2_g7egru.webp'}
+            src={
+              "https://res.cloudinary.com/drq2xwi3o/image/upload/v1697625193/E-Commerce/2_g7egru.webp"
+            }
             width={"100%"}
             height={"100%"}
-            alt='a bag'
-            
+            alt="a bag"
           />
         </Box>
         <Box
@@ -98,13 +98,15 @@ const HorizontalCard = ({
             }`}
           </Typography>
         </Box>
-        <ButtonWithIcon
-          padding={"2px 20px"}
-          startIcon={<PiHandbagSimple />}
-          type={"outlined"}
-        >
-          Add to bag
-        </ButtonWithIcon>
+        {button && (
+          <ButtonWithIcon
+            padding={"2px 20px"}
+            startIcon={<PiHandbagSimple />}
+            type={"outlined"}
+          >
+            Add to bag
+          </ButtonWithIcon>
+        )}
       </Box>
     </Link>
   );

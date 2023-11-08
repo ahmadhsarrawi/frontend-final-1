@@ -34,10 +34,10 @@ const HandPickedCollections = () => {
         {ctx.handpicked ? (
           <GridContainer xsSize={6} mdSize={3}>
 
-            {ctx.handpicked?ctx.handpicked.data.map(item => {
-              return <Grid key={item.id} item xs={6} md={3}>
-                <Tile image={item.image} id={item.id} />
-              </Grid>
+            {ctx.handpicked?ctx.handpicked.data.map((item,index) => {
+              return index<4? <Grid key={item.id} item xs={6} md={3}>
+                <Tile image={item.image} id={item.id} title={item.name} />
+              </Grid>:''
             }):''}
 
           </GridContainer>

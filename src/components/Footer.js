@@ -34,7 +34,7 @@ const list2Info = {
 
 const AccordionContainer = (props) => {
   return (
-    <Accordion TransitionProps={{ "aria-expanded": "false" }} elevation={0}>
+    <Accordion defaultExpanded TransitionProps={{ "aria-expanded": "false" }} elevation={0}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="titleMedium" color={"lowEmphasis.main"}>
           More about CORA'L

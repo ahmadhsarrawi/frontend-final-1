@@ -2,9 +2,11 @@ import React from "react";
 import { Typography, Paper, Card } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-const Tile = ({ image, title }) => {
+const Tile = ({ image, title,id }) => {
+  
   return (
-    <NavLink to={"/categories"}>
+    <NavLink to={`/categories/${id}`}>
+
       <Card
         elevation={0}
         sx={{
@@ -12,7 +14,7 @@ const Tile = ({ image, title }) => {
           aspectRatio: "1/1",
           borderRadius: "8px",
           overflow: "hidden",
-          minWidth: { xs: "156px" },
+          minWidth: { xs: "125px" },
         }}
       >
         <Paper

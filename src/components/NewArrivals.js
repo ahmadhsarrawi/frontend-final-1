@@ -8,18 +8,20 @@ import fetchData from "../services/APIs";
 import SpinLoader from "./common/SpinLoader";
 
 const NewArrivals = () => {
+  
   const ctx = useContext(Context);
   useEffect(() => {
     ctx.setIsLoading(true);
     ctx.setNewArrivals([]);
     fetchData("products?new-arrivals=true").then((data) =>
-      ctx.setNewArrivals(data)
+    ctx.setNewArrivals(data)
     );
     ctx.newArrivals && ctx.setIsLoading(false);
   }, []);
   // useEffect(() => {
-  //   console.log(ctx.products.data);
-  // }, [ctx.products]);
+    //   console.log(ctx.products.data);
+    // }, [ctx.products]);
+    // console.log(2);
   return (
     <>
       {!ctx.newArrivals ? (
