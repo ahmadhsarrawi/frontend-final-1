@@ -20,6 +20,16 @@ const HorizontalCard = ({button,
   image,
   longDescription
 }) => {
+  let productImages = [];
+
+  // Check if 'product' is a valid JSON string before attempting to parse it
+  if (image) {
+    try {
+      productImages = JSON.parse(image);
+    } catch (error) {
+      console.error("Error parsing JSON:", error);
+    }
+  }
   return (
     <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
       <Box
@@ -60,7 +70,7 @@ const HorizontalCard = ({button,
           )}
           <img
             src={
-              "https://res.cloudinary.com/drq2xwi3o/image/upload/v1697625193/E-Commerce/2_g7egru.webp"
+              productImages[0]
             }
             width={"100%"}
             style={{aspectRatio:1/1}}

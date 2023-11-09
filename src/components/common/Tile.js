@@ -3,7 +3,16 @@ import { Typography, Paper, Card } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 const Tile = ({ image, title,id,brandId,categoryId }) => {
-  
+  let productImages = [];
+
+  if (image) {
+    try {
+      productImages = JSON.parse(image);
+    } catch (error) {
+      console.error("Error parsing JSON:", error);
+    }
+  }
+
   return (
     <NavLink to={`/categories/${categoryId}`}>
 
@@ -40,7 +49,7 @@ const Tile = ({ image, title,id,brandId,categoryId }) => {
           </Typography>
         </Paper>
         <img
-          src={image}
+          src={productImages[0]}
           width={"100%"}
           height={"100%"}
         />

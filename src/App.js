@@ -17,17 +17,31 @@ function App() {
     <ThemeProvider theme={theme}>
       <ContextProvider>
         <BrowserRouter basename="frontend-final-1">
-          <Header />
           <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/categories/:id" element={<CategoryProducts />} />
-            <Route path="/brands/:id" element={<BrandsPage />} />
-            <Route path="/product/:id" element={<Product />} />
-            <Route path="/sign-in" element={<SignIn />} />{" "}
-            {/* Sign-in page without header and footer */}
+            {/* Sign In and Sign Up pages without Header and Footer */}
+            <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
+
+            {/* Routes with Header and Footer */}
+            <Route
+              path="/*"
+              element={
+                <>
+                  <Header />
+                  <Routes>
+                    <Route index element={<Landing />} />
+                    <Route
+                      path="/categories/:id"
+                      element={<CategoryProducts />}
+                    />
+                    <Route path="/brands/:id" element={<BrandsPage />} />
+                    <Route path="/product/:id" element={<Product />} />
+                  </Routes>
+                  <Footer />
+                </>
+              }
+            />
           </Routes>
-          <Footer />
         </BrowserRouter>
       </ContextProvider>
     </ThemeProvider>
