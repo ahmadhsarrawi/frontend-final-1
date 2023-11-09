@@ -11,6 +11,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "./common/Theme";
 import Carousel from "react-material-ui-carousel";
 import trendyBags from "../assets/images/heroSecImg/trendyBags.svg";
+import spring from "../assets/images/heroSecImg/spring.svg";
+
 import ButtonWithIcon from "./common/ButtonWithIcon";
 import EastIcon from "@mui/icons-material/East";
 
@@ -28,6 +30,11 @@ export default function Hero() {
       headingtext: "Carry your Funk",
       paraText: "Trendy handbags collection for your party animal",
     },
+    {
+      image:spring,
+      
+
+    }
   ];
   return (
     <ThemeProvider theme={theme}>
