@@ -7,7 +7,7 @@ import TitleWithButton from "./common/TitleWithButton";
 import Context from "../store/context";
 import fetchData from "../services/APIs";
 import SpinLoader from "../components/common/SpinLoader";
-import { react } from "@babel/types";
+
 
 const ShopByBrands = React.forwardRef((props,ref)=> {
   const ctx = useContext(Context);

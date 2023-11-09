@@ -18,6 +18,7 @@ const HorizontalCard = ({button,
   category_id,
   brand_id,
   image,
+  longDescription
 }) => {
   return (
     <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
@@ -75,14 +76,14 @@ const HorizontalCard = ({button,
           }}
         >
           <Typography variant="bodyMedium" color={"highEmphasis.main"}>
-            Grande
+            {name}
           </Typography>
           <IconButton>
             <TbHeart size={"24px"} />
           </IconButton>
         </Box>
         <Typography variant="bodyRegular" color={"lowEmphasis.main"}>
-          Blossom Pouch
+          {description}
         </Typography>
         <Rating rating={rating} number={43} gap={'30px'}/>
         <Box sx={{ display: "flex", gap: "6px" }}>

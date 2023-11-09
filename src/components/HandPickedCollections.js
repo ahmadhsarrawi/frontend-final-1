@@ -7,7 +7,7 @@ import Context from "../store/context";
 import fetchData from "../services/APIs";
 import SpinLoader from "./common/SpinLoader";
 
-const HandPickedCollections = React.forwardRef((props,ref)=> {
+const HandPickedCollections = React.forwardRef((props, ref) => {
   const ctx = useContext(Context);
   useEffect(() => {
     ctx.setHandpicked(null);
@@ -16,7 +16,9 @@ const HandPickedCollections = React.forwardRef((props,ref)=> {
     );
   }, []);
   return (
-    <Paper ref={ctx.handpickedRef} id='handpicked'
+    <Paper
+      ref={ctx.handpickedRef}
+      id="handpicked"
       elevation={0}
       sx={{
         width: "100%",
@@ -33,13 +35,23 @@ const HandPickedCollections = React.forwardRef((props,ref)=> {
         />
         {ctx.handpicked ? (
           <GridContainer xsSize={6} mdSize={3}>
-
-            {ctx.handpicked?ctx.handpicked.data.map((item,index) => {
-              return index<4? <Grid key={item.id} item xs={6} md={3}>
-                <Tile image={item.image} id={item.id} title={item.name} />
-              </Grid>:''
-            }):''}
-
+            {ctx.handpicked
+              ? ctx.handpicked.data.map((item, index) => {
+                  return index < 4 ? (
+                    <Grid key={item.id} item xs={6} md={3}>
+                      <Tile
+                        brandId={item.brand_id}
+                        categoryId={item.category_id}
+                        image={item.image}
+                        id={item.id}
+                        title={item.name}
+                      />
+                    </Grid>
+                  ) : (
+                    ""
+                  );
+                })
+              : ""}
           </GridContainer>
         ) : (
           <SpinLoader />

@@ -2,10 +2,10 @@ import React from "react";
 import { Typography, Paper, Card } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-const Tile = ({ image, title,id }) => {
+const Tile = ({ image, title,id,brandId,categoryId }) => {
   
   return (
-    <NavLink to={`/categories/${id}`}>
+    <NavLink to={`/categories/${categoryId}`}>
 
       <Card
         elevation={0}
