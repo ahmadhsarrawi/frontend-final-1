@@ -6,9 +6,12 @@ import Rating from "../Rating";
 import ButtonWithIcon from "../ButtonWithIcon";
 import { ReactComponent as BagIcon } from "../../../assets/icons/bag.svg";
 import { ReactComponent as Wishlist } from "../../../assets/images/wishlist.svg";
-import { margin } from "@mui/system";
+import {useMediaQuery} from "@mui/material";
 export default function ProductDetails({ name, description, rate,discount,price }) {
   const [counter, setCounter] = useState(1);
+  const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.values.sm}px)`);
+  const isTablet = useMediaQuery(`(max-width: ${theme.breakpoints.values.md1}px)`);
+
   const incCounter = () => {
     setCounter((prevCount) => prevCount + 1);
   };
@@ -119,10 +122,10 @@ export default function ProductDetails({ name, description, rate,discount,price 
           </Box>
         </Box>
         {/* buttons */}
-        <Grid container>
-          <Grid item xs={12} lg={7} sx={{marginBottom:"10px"}}>
+        <Grid container spacing={2}sx={{display:"flex",justifyContent:"flex-start"}}>
+          <Grid item   sx={{ marginBottom: "10px" }}>
             <ButtonWithIcon
-              padding="10px 120px"
+              padding="10px 100px"
               type="primary"
               startIcon={<BagIcon />}
               fontSize="0.7rem"
@@ -130,15 +133,15 @@ export default function ProductDetails({ name, description, rate,discount,price 
               Add to bag
             </ButtonWithIcon>
           </Grid>
-          <Grid item xs={12} lg={5}>
+          <Grid item  >
             <ButtonWithIcon
-              padding="10px 50px"
+              padding="10px 30px"
               type="outlined"
               startIcon={<Wishlist />}
               fontSize="0.7rem"
              
             >
-              Add to Wishlist
+              {(!isMobile&&!isTablet)?"Add to Wishlist":""}
             </ButtonWithIcon>
           </Grid>
         </Grid>

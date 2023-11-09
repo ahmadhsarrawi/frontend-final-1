@@ -4,7 +4,6 @@ import fetchData from "../../../services/APIs";
 import HorizontalFlexContainer from "../HorizontalFlexContainer";
 import HorizontalCard from "../HorizontalCard";
 import { Container} from "@mui/material";
-import TitleWithButton from "../TitleWithButton";
 import SpinLoader from "../SpinLoader";
 
 export default function RelatedProducts({categoryId}) {
@@ -22,8 +21,7 @@ export default function RelatedProducts({categoryId}) {
         }
 
         fetchDataAsync();
-    }, [ctx]);
-
+    }, []);
     return (
       <>
         {!ctx.relatedProducts ? (
@@ -31,10 +29,11 @@ export default function RelatedProducts({categoryId}) {
         ) : (
           <Container maxWidth="100">
             <HorizontalFlexContainer>
-            {ctx.relatedProducts &&
+              {ctx.relatedProducts &&
                 ctx.relatedProducts.map((item) => (
-                    <HorizontalCard
+                  <HorizontalCard
                     key={item.id}
+                    image={item.image}
                     id={item.id}
                     name={item.name}
                     description={item.description}
