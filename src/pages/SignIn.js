@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from "react";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-
+import Context from "../store/context";
 const defaultTheme = createTheme();
 
 export default function SignIn() {
@@ -23,6 +23,7 @@ export default function SignIn() {
   const [formErrors, setFormErrors] = useState({ email: '', password: '' });
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const navigate = useNavigate();
+  const ctx = useContext(Context);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,7 +59,18 @@ export default function SignIn() {
           'https://e-store-comerce.onrender.com/auth/signin',
           formData
         );
-        navigate(`/`, { replace: true });
+  
+        // Check if the response contains a valid token and user information
+        if (response.data.token && response.data.user) {
+          // Store user information and token in local storage
+          localStorage.setItem('user', JSON.stringify(response.data.user));
+          localStorage.setItem('token', response.data.token);
+          ctx.setIsSignedIn(true);
+          navigate(`/`, { replace: true });
+        } else {
+          console.error('Invalid response format');
+          // Handle invalid response format
+        }
       } catch (error) {
         console.error('Sign-in error', error);
       }

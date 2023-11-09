@@ -22,7 +22,7 @@ const CategoryProducts = () => {
     fetchData(`categories/${3}/products`).then((data) =>
       ctx.setCategoryProducts(data)
     );
-  }, []);
+  }, [id]);
 
   return (
     <>

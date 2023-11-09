@@ -21,6 +21,8 @@ const Context = React.createContext({
   setCategories: "",
   categoryProducts: "",
   setCategoryProducts: "",
+  isSignedIn:"",
+  setIsSignedIn:"",
 });
 
 export default Context;

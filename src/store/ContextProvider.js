@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import Context from "./context";
 
 const ContextProvider = ({ children }) => {
@@ -12,7 +12,8 @@ const ContextProvider = ({ children }) => {
   const [brands, setBrands] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState(null);
   const [categories, setCategories] = useState(null);
-
+  const [isSignedIn, setIsSignedIn] = useState(  !!localStorage.getItem('token') );
+  
   const contextData = {
     category: category,
     setCategory: setCategory,
@@ -34,6 +35,8 @@ const ContextProvider = ({ children }) => {
     setCategories: setCategories,
     categoryProducts: categoryProducts,
     setCategoryProducts:setCategoryProducts,
+    isSignedIn:isSignedIn,
+    setIsSignedIn:setIsSignedIn,
   };
 
   return <Context.Provider value={contextData}>{children}</Context.Provider>;
