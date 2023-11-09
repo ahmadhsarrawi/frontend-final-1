@@ -25,7 +25,7 @@ const CategoryProducts = () => {
     fetchData(`categories/${id}/products?page=${page}&perPage=4`).then((data) =>
       ctx.setCategoryProducts(data)
     );
-  }, [id,page]);
+  }, [id]);
 
   return (
     <>

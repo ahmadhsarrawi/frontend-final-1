@@ -10,7 +10,6 @@ import ContextProvider from "./store/ContextProvider";
 import SignIn from "./pages/SignIn"; // Import the SignIn component
 import SignUp from "./pages/SignUp";
 import CategoryProducts from "./pages/CategoryProducts";
-import BrandsPage from "./pages/BrandsPage";
 
 function App() {
   return (

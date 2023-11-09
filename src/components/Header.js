@@ -9,6 +9,8 @@ import {
   Typography,
   useMediaQuery,
   Container,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import SearchWithIcon from "./common/SearchWithIcon";
@@ -24,36 +26,60 @@ import theme from "./common/Theme";
 import Context from "../store/context";
 import fetchData from "../services/APIs";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 const HeaderTabs = ({ value, handleChange, categories }) => (
-  <Tabs
-    value={value}
-    onChange={handleChange}
-    classes={{ indicator: "indicator-class" }}
-  >
-    {categories?.map((category, index) => (
-      index <5 && (
-        <Tab key={index} label={category.name} sx={tabStyles} />
-      )
+  <Tabs value={value} onChange={handleChange} classes={{ indicator: "indicator-class" }}>
+    {categories?.slice(0, 5).map((category) => (
+      <Tab
+        label={category.name}
+        sx={tabStyles}
+        key={category.id}
+        component={Link}
+        to={`/categories/${category.id}`}
+      />
     ))}
   </Tabs>
 );
+
 const tabStyles = {
   textTransform: "capitalize",
   fontSize: "14px",
   color: "#171520",
 };
+const linkStyles = {
+  color: "#171520", // Change link color
+  textDecoration: "none", // Remove underline
+};
+// ... (other imports)
 
 const Header = () => {
   const ctx = useContext(Context);
   const [value, setValue] = React.useState(0);
-  const isMobile = useMediaQuery(
-    `(max-width: ${theme.breakpoints.values.sm}px)`
-  );
-  const isTablet = useMediaQuery(
-    `(max-width:${theme.breakpoints.values.md1}px)`
-  );
+  const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.values.sm}px)`);
+  const isTablet = useMediaQuery(`(max-width: ${theme.breakpoints.values.md1}px)`);
 
+  const [menuAnchorEl, setMenuAnchorEl] = React.useState(null);
+
+  const handleMenuOpen = (event) => {
+    setMenuAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setMenuAnchorEl(null);
+  };
+  const handleSignOut = async () => {
+    try {
+      // You can add any necessary logic here before or after the sign-out request
+      // For example, clearing local storage, updating context, etc.
+      localStorage.removeItem('token'); // Remove the token from local storage
+
+      await axios.post('https://e-store-comerce.onrender.com/auth/signout');
+      ctx.setIsSignedIn(false);
+      handleMenuClose();
+    } catch (error) {
+      console.error('Sign-out error', error);
+    }
+  };
   useEffect(() => {
     async function fetchDataAsync() {
       try {
@@ -66,15 +92,15 @@ const Header = () => {
     }
 
     fetchDataAsync();
-  }, []); 
- 
+  }, []);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const iconsData = [
     { icon: wishlist, alt: "heart icon" },
-    { icon: profile, alt: "profile icon" ,linkPage:"/sign-in"},
+    { icon: profile, alt: "profile icon" },
     { icon: bag, alt: "bag icon" },
   ];
 
@@ -86,9 +112,7 @@ const Header = () => {
 
   const iconSet = isMobile ? mobileIconsData : iconsData;
 
-  
   return (
-
     <ThemeProvider theme={theme}>
       <Container maxWidth="100%">
         <AppBar
@@ -110,55 +134,86 @@ const Header = () => {
               width="100%"
               spacing={{ xs: 0, md: 4 }}
             >
-              {(isMobile || isTablet) && (
+              {(isMobile ) && (
                 <>
                   <IconButton
                     size="large"
                     sx={{ color: theme.palette.primary.main, pl: "0" }}
                     aria-label="menu"
+                    onClick={handleMenuOpen}
                   >
                     <img src={menu} alt="menu" />
                   </IconButton>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      marginLeft: "8px",
-                      ...theme.typography.displaySmall,
-                      color: theme.palette.primary.main,
-                    }}
-                  >
-                    Home
-                  </Typography>
+                  {isMobile && (
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        marginLeft: "8px",
+                        ...theme.typography.displaySmall,
+                        color: theme.palette.primary.main,
+                      }}
+                    >
+                      Home
+                    </Typography>
+                  )}
                 </>
               )}
-              {!isMobile && !isTablet && (
-                <>
-                  <img
-                    style={{ width: "108px", height: "22px" }}
-                    src={logo}
-                    alt="logo"
-                  />
-                  <HeaderTabs value={value} handleChange={handleChange} categories={ctx.categories||[]}/>
-                </>
+              {isTablet&&!isMobile&&(<Link to="/">
+                  <img style={{ width: "108px", height: "22px" }} src={logo} alt="logo" />
+                </Link>)}
+              {(!isMobile && !isTablet) && (
+                <Link to="/">
+                  <img style={{ width: "108px", height: "22px" }} src={logo} alt="logo" />
+                </Link>
+              )}
+              {(!isMobile && !isTablet) && (
+                <HeaderTabs value={value} handleChange={handleChange} categories={ctx.categories || []} />
               )}
               <Stack
                 direction="row"
                 spacing={0.5}
                 style={{ marginLeft: "auto" }}
               >
-              
-              {!isMobile && <SearchWithIcon />}
+                {!isMobile && <SearchWithIcon />}
                 {iconSet.map((data, index) => (
-                  <Link to={data.linkPage} key={index}> {/* Use data.linkPage as the path */}
-                    <IconButton>
-                      <img src={data.icon} alt={data.alt} />
-                    </IconButton>
-                  </Link>
+                  <IconButton     onClick={data.alt === "profile icon" ? handleMenuOpen : null}
+                  key={index}>
+                    <img src={data.icon} alt={data.alt} /> {/* Open menu on clicking icon */}
+                  </IconButton>
                 ))}
               </Stack>
             </Stack>
           </Toolbar>
         </AppBar>
+        <Menu
+          anchorEl={menuAnchorEl}
+          open={Boolean(menuAnchorEl)}
+          onClose={handleMenuClose}
+        >
+          {ctx.isSignedIn ? (
+            <div>
+              <MenuItem onClick={handleMenuClose}>
+                <Link to="/your-profile" style={linkStyles}>
+                  Your Profile
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
+            </div>
+          ) : (
+            <div>
+              <MenuItem onClick={handleMenuClose}>
+                <Link to="/sign-in" style={linkStyles}>
+                  Sign In
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleMenuClose}>
+                <Link to="/sign-up" style={linkStyles}>
+                  Sign Up
+                </Link>
+              </MenuItem>
+            </div>
+          )}
+        </Menu>
       </Container>
     </ThemeProvider>
   );

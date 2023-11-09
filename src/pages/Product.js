@@ -22,7 +22,8 @@ const Product = () => {
   return (
     <Container maxWidth="100%" sx={{ marginBottom: "50px" }}>
       <Box sx={{ marginBottom: "15px", marginTop: "20px" }}>
-        <CustomSeparator />
+      <CustomSeparator categoryId={ctx.product ? ctx.product.category_id : ""} />
+
       </Box>
       <Grid container spacing={3} sx={{ display: "flex" }}>
         {/* Product image */}

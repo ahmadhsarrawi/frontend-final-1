@@ -29,7 +29,9 @@ const Context = React.createContext({
   brand: '',
   setBrand: '',
   brandProducts: '',
-  setBrandProducts:''
+  setBrandProducts:'',
+  isSignedIn:"",
+  setIsSignedIn:"",
 });
 
 export default Context;

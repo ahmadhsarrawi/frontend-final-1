@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+
 import Context from "./context";
 
 const ContextProvider = ({ children }) => {
@@ -15,10 +16,11 @@ const ContextProvider = ({ children }) => {
   const [brand, setBrand] = useState(null);
   const [brandProducts, setBrandProducts] = useState(null);
 
-
   const newArrivalsRef = useRef();
   const handpickedRef = useRef();
   const brandsRef = useRef();
+
+  const [isSignedIn, setIsSignedIn] = useState(!!localStorage.getItem("token"));
 
   const contextData = {
     category: category,
@@ -48,8 +50,10 @@ const ContextProvider = ({ children }) => {
     setBrand: setBrand,
     brandProducts: brandProducts,
     setBrandProducts: setBrandProducts,
-    
-   
+
+    setCategoryProducts: setCategoryProducts,
+    isSignedIn: isSignedIn,
+    setIsSignedIn: setIsSignedIn,
   };
 
   return <Context.Provider value={contextData}>{children}</Context.Provider>;
