@@ -71,6 +71,7 @@ const BrandsPage = () => {
                 return (
                   <Grid item md2={3} key={item.id} xs={6} sm={4} lg={3}>
                     <HorizontalCard
+                      image={item.image}
                       price={item.price}
                       discount={item.discount}
                       rating={item.rating}
