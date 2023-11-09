@@ -7,8 +7,9 @@ import TitleWithButton from "./common/TitleWithButton";
 import Context from "../store/context";
 import fetchData from "../services/APIs";
 import SpinLoader from "../components/common/SpinLoader";
+import { react } from "@babel/types";
 
-const ShopByBrands = () => {
+const ShopByBrands = React.forwardRef((props,ref)=> {
   const ctx = useContext(Context);
 
   useEffect(() => {
@@ -19,6 +20,7 @@ const ShopByBrands = () => {
     <Paper
       elevation={0}
       sx={{ width: "100%", borderRadius: "0", overflow: "hidden", py: "32px" }}
+      ref={ctx.brandsRef} id='brands'
     >
       <Container maxWidth="100%">
         <TitleWithButton
@@ -32,7 +34,7 @@ const ShopByBrands = () => {
               ? ctx.brands.map((item) => {
                   return (
                     <Grid key={item.id} item xs={4} md={2}>
-                      <BrandTile image={item.image} />
+                      <BrandTile image={item.image} id={item.id} />
                     </Grid>
                   );
                 })
@@ -44,6 +46,6 @@ const ShopByBrands = () => {
       </Container>
     </Paper>
   );
-};
+});
 
 export default ShopByBrands;

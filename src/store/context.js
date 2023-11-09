@@ -21,6 +21,15 @@ const Context = React.createContext({
   setCategories: "",
   categoryProducts: "",
   setCategoryProducts: "",
+  featured: "",
+  setFeatured: "",
+  newArrivalsRef: "",
+  handpickedRef: "",
+  brandsRef: "",
+  brand: '',
+  setBrand: '',
+  brandProducts: '',
+  setBrandProducts:''
 });
 
 export default Context;

@@ -2,8 +2,6 @@ import React from "react";
 import Banner from "../components/Banner";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../components/common/Theme";
-import HorizontalFlexContainer from "../components/common/HorizontalFlexContainer";
-import IconTile from "../components/common/IconTile";
 import NewArrivals from "../components/NewArrivals";
 import HandPickedCollections from "../components/HandPickedCollections";
 import ShopByBrands from "../components/ShopByBrands";
@@ -14,7 +12,7 @@ export default function Landing(props) {
   return (
     <ThemeProvider theme={theme}>
       <Hero />
-      <TopCategories/>
+      <TopCategories />
       <NewArrivals />
       <HandPickedCollections />
       <ShopByBrands />

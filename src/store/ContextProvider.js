@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useRef } from "react";
 import Context from "./context";
 
 const ContextProvider = ({ children }) => {
@@ -12,6 +12,13 @@ const ContextProvider = ({ children }) => {
   const [brands, setBrands] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState(null);
   const [categories, setCategories] = useState(null);
+  const [brand, setBrand] = useState(null);
+  const [brandProducts, setBrandProducts] = useState(null);
+
+
+  const newArrivalsRef = useRef();
+  const handpickedRef = useRef();
+  const brandsRef = useRef();
 
   const contextData = {
     category: category,
@@ -33,7 +40,16 @@ const ContextProvider = ({ children }) => {
     categories: categories,
     setCategories: setCategories,
     categoryProducts: categoryProducts,
-    setCategoryProducts:setCategoryProducts,
+    setCategoryProducts: setCategoryProducts,
+    newArrivalsRef: newArrivalsRef,
+    handpickedRef: handpickedRef,
+    brandsRef: brandsRef,
+    brand: brand,
+    setBrand: setBrand,
+    brandProducts: brandProducts,
+    setBrandProducts: setBrandProducts,
+    
+   
   };
 
   return <Context.Provider value={contextData}>{children}</Context.Provider>;

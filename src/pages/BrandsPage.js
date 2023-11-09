@@ -13,23 +13,23 @@ import Context from "../store/context";
 import SpinLoader from "../components/common/SpinLoader";
 import { useParams } from "react-router-dom";
 
-const CategoryProducts = () => {
-  let { id, brands } = useParams();
+const BrandsPage = () => {
+  let { id,  } = useParams();
 
   const [page, setPage] = useState(1);
   const ctx = useContext(Context);
-  console.log(id,brands);
+  
   useEffect(() => {
     ctx.setCategory(null);
-    fetchData(`categories/${id}`).then((data) => ctx.setCategory(data));
-    fetchData(`categories/${id}/products?page=${page}&perPage=4`).then((data) =>
-      ctx.setCategoryProducts(data)
+    fetchData(`brands/${id}`).then((data) => ctx.setBrand(data));
+    fetchData(`categories/${id}/products/brands?page=${page}&perPage=4`).then((data) =>
+      ctx.setBrandProducts(data)
     );
   }, [id,page]);
 
   return (
     <>
-      {!ctx.category || !ctx.categoryProducts ? (
+      {!ctx.brand || !ctx.brandProducts ? (
         <SpinLoader />
       ) : (
         <>
@@ -53,7 +53,7 @@ const CategoryProducts = () => {
                 />
               </IconButton>
               <TitleWithButton
-                title={ctx.category.name}
+                title={ctx.brand.name}
                 titleColor={"primary.main"}
               />
             </Box>
@@ -67,7 +67,7 @@ const CategoryProducts = () => {
               255 Products
             </Typography>
             <GridContainer>
-              {ctx.categoryProducts.data.map((item) => {
+              {ctx.brandProducts.data.map((item) => {
                 return (
                   <Grid item md2={3} key={item.id} xs={6} sm={4} lg={3}>
                     <HorizontalCard
@@ -83,7 +83,7 @@ const CategoryProducts = () => {
             <CustomPagination
               page={page ? page : 1}
               setPage={setPage}
-              numOfPages={ctx.categoryProducts.pagination.totalPages}
+              numOfPages={ctx.brandProducts.pagination.totalPages}
             />
           </Container>
         </>
@@ -92,4 +92,4 @@ const CategoryProducts = () => {
   );
 };
 
-export default CategoryProducts;
+export default BrandsPage;

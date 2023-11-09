@@ -10,6 +10,7 @@ import ContextProvider from "./store/ContextProvider";
 import SignIn from "./pages/SignIn"; // Import the SignIn component
 import SignUp from "./pages/SignUp";
 import CategoryProducts from "./pages/CategoryProducts";
+import BrandsPage from "./pages/BrandsPage";
 
 function App() {
   return (
@@ -20,18 +21,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/categories/:id" element={<CategoryProducts />} />
+            <Route path="/brands/:id" element={<BrandsPage />} />
             <Route path="/product/:id" element={<Product />} />
-          </Routes>
-
-          <Routes>
             <Route path="/sign-in" element={<SignIn />} />{" "}
             {/* Sign-in page without header and footer */}
             <Route path="/sign-up" element={<SignUp />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </ContextProvider>
-
-      <Footer />
     </ThemeProvider>
   );
 }

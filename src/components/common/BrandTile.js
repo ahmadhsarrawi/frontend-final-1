@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import { NavLink } from "react-router-dom";
 const BrandTile = ({ image,id }) => {
   return (
-    <NavLink style={{ textDecoration: 'none' } }to={'/categories?id='+id}>
+    <NavLink style={{ textDecoration: 'none' } }to={`/brands/${id}`}>
 
       <Box sx={{
         overflow: 'hidden',

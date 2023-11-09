@@ -12,10 +12,10 @@ import { NavLink } from 'react-router-dom';
 const TopCategories = () => {
 
   const ctx = useContext(Context);
-  useEffect(() => {
-    fetchData('categories').then(data=>ctx.setCategories(data))
-  },[])
-console.log(ctx.categories);
+  // useEffect(() => {
+  //   fetchData('categories').then(data=>ctx.setCategories(data))
+  // },[])
+// console.log(ctx.categories);
   return (
       <Container maxWidth="100%" sx={{display:{sm2:'none'}}}>
           <TitleWithButton title='Top Categories'/>

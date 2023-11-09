@@ -7,7 +7,7 @@ import Context from "../store/context";
 import fetchData from "../services/APIs";
 import SpinLoader from "./common/SpinLoader";
 
-const HandPickedCollections = () => {
+const HandPickedCollections = React.forwardRef((props,ref)=> {
   const ctx = useContext(Context);
   useEffect(() => {
     ctx.setHandpicked(null);
@@ -16,7 +16,7 @@ const HandPickedCollections = () => {
     );
   }, []);
   return (
-    <Paper
+    <Paper ref={ctx.handpickedRef} id='handpicked'
       elevation={0}
       sx={{
         width: "100%",
@@ -47,6 +47,6 @@ const HandPickedCollections = () => {
       </Container>
     </Paper>
   );
-};
+});
 
 export default HandPickedCollections;

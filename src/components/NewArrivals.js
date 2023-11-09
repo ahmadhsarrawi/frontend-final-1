@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect,forwardRef, useRef } from "react";
 import HorizontalFlexContainer from "./common/HorizontalFlexContainer";
 import HorizontalCard from "./common/HorizontalCard";
 import { Container, Paper } from "@mui/material";
@@ -7,13 +7,14 @@ import Context from "../store/context";
 import fetchData from "../services/APIs";
 import SpinLoader from "./common/SpinLoader";
 
-const NewArrivals = () => {
-  
+const NewArrivals = React.forwardRef((props,ref) => {
   const ctx = useContext(Context);
+  
+  
   useEffect(() => {
     ctx.setIsLoading(true);
     ctx.setNewArrivals([]);
-    fetchData("products?new-arrivals=true").then((data) =>
+    fetchData("products/new-arrivals").then((data) =>
     ctx.setNewArrivals(data)
     );
     ctx.newArrivals && ctx.setIsLoading(false);
@@ -27,7 +28,7 @@ const NewArrivals = () => {
       {!ctx.newArrivals ? (
         <SpinLoader />
       ) : (
-        <Container maxWidth="100%">
+        <Container maxWidth="100%" ref={ctx.newArrivalsRef} id='featured'>
           <TitleWithButton
             title={"New Arrivals"}
             button
@@ -53,6 +54,6 @@ const NewArrivals = () => {
       )}
     </>
   );
-};
+});
 
-export default NewArrivals;
+export default NewArrivals
