@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 
-
-
-export const context =React.createContext({
-    
-    
-
+const Context = React.createContext({
+  category: "",
+  setCategory: "",
+  isLoading: "",
+  setIsLoading: "",
+  products: "",
+  setProducts: "",
+  newArrivals: "",
+  setNewArrivals: "",
+  handpicked: "",
+  setHandpicked: "",
+  product: "",
+  setProduct: "",
+  brands: "",
+  setBrands: "",
+  relatedProducts: "",
+  setRelatedProducts: "",
+  categories: "",
+  setCategories: "",
+  categoryProducts: "",
+  setCategoryProducts: "",
+  isSignedIn:"",
+  setIsSignedIn:"",
 });
 
-const contextData = {
-    
-    
-}
-
-
-const ContextProvider = (props) => {
-  return (
-      <context.Provider value={contextData}>
-          {props.children}
-    </context.Provider>
-  )
-}
-
-export default ContextProvider;
-
-
+export default Context;
