@@ -16,9 +16,7 @@ import LocationIcon from "../assets/images/LocationIcon";
 import theme from "./common/Theme";
 import Context from "../store/context";
 import SpinLoader from "./common/SpinLoader";
-import { NavLink, Link } from "react-router-dom";
-import FooterScrollLink from "./common/FooterScrollLink";
-import { HashLink } from "react-router-hash-link";
+import { NavLink } from "react-router-dom";
 import ProductTitledList from "./common/ProductTitledList";
 
 const list1Info = {
