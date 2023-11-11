@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, forwardRef, useRef } from "react";
+import React, { useContext, useEffect,  } from "react";
 import HorizontalFlexContainer from "./common/HorizontalFlexContainer";
 import HorizontalCard from "./common/HorizontalCard";
-import { Container, Paper } from "@mui/material";
+import { Container,  } from "@mui/material";
 import TitleWithButton from "./common/TitleWithButton";
 import Context from "../store/context";
 import fetchData from "../services/APIs";

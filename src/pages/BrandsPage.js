@@ -71,10 +71,18 @@ const BrandsPage = () => {
                 return (
                   <Grid item md2={3} key={item.id} xs={6} sm={4} lg={3}>
                     <HorizontalCard
-                      price={item.price}
-                      discount={item.discount}
-                      rating={item.rating}
+                      key={item.id}
+                      image={item.image}
                       id={item.id}
+                      name={item.name}
+                      description={item.description}
+                      price={item.price}
+                      rating={item.rating}
+                      discount={item.discount}
+                      color={item.color}
+                      category_id={item.category_id}
+                      brand_id={item.brand_id}
+                      longDescription={item.longDescription}
                     />
                   </Grid>
                 );
