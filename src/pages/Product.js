@@ -41,7 +41,7 @@ const Product = () => {
         )}
       </Grid>
       {(ctx.product&&!isMobile) ? (
-        <ProductDescription longDesc={ctx.product ? ctx.product.longDescription: ""}categoryId={ctx.product ? ctx.product.category_id: ""} />
+        <ProductDescription longDesc={ctx.product ? ctx.product.longDescription: ""}categoryId={ctx.product ? ctx.product.category_id: ""} productId={id}/>
       ) : (
         <p></p> 
       )}{" "}

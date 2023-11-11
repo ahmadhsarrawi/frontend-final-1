@@ -1,10 +1,10 @@
 import React from 'react'
 import {Box}from '@mui/material'
 import ProductTabs from './ProductTabs';
-export default function ProductDescription({longDesc,categoryId}) {
+export default function ProductDescription({longDesc,categoryId,productId}) {
   return (
    <Box sx={{ marginTop: "32px", marginBottom: "32px" }}>
-    <ProductTabs longDesc={longDesc}categoryId={categoryId} />
+    <ProductTabs longDesc={longDesc}categoryId={categoryId}productId={productId} />
    </Box>
   );
 }

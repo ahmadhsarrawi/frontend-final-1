@@ -4,7 +4,7 @@ import theme from "../Theme";
 import { ThemeProvider } from "@mui/material/styles";
 import RelatedProducts from "./RelatedProducts"; // Import your RelatedProducts component
 
-export default function ProductTabs({longDesc,categoryId}) {
+export default function ProductTabs({longDesc,categoryId,productId}) {
   const [tabValue, setTabValue] = useState("1");
   const handleChange = (event, newValue) => {
     setTabValue(newValue);
@@ -91,7 +91,7 @@ export default function ProductTabs({longDesc,categoryId}) {
         {/* Conditional rendering based on the selected tab value */}
         <Box sx={{ margin: "20px 0", textAlign: "center" }}>
           {tabValue === "2" ? (
-            <RelatedProducts categoryId={categoryId}/>
+            <RelatedProducts categoryId={categoryId}productId={productId}/>
           ) : (
             <Typography sx={{ textAlign: "left", color: `${theme.palette.lowEmphasis.main}` }}>
               {descriptions[tabValue]}
